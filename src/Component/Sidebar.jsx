@@ -1,61 +1,75 @@
-import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import { useAuth } from "../Context/AuthContext";
+import React, { useState } from "react";
+import {
+  MdDashboard,
+  MdOutlinePayments,
+  MdOutlineLiveTv,
+  MdOutlineAddCircleOutline,
+} from "react-icons/md";
+import { FaUsers, FaUniversity, FaRupeeSign, FaGift } from "react-icons/fa";
+import { IoIosArrowForward } from "react-icons/io";
+import { BsBroadcast, BsShieldCheck } from "react-icons/bs";
+import { HiOutlineCurrencyRupee } from "react-icons/hi";
+import { AiOutlineBank } from "react-icons/ai";
+import { GiReceiveMoney } from "react-icons/gi";
+import { IoSettingsOutline } from "react-icons/io5";
+import { BiSolidGift } from "react-icons/bi";
 
 const Sidebar = () => {
-  const { logout } = useAuth();
-  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(true);
 
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  };
+  const menuItems = [
+    { name: "Dashboard", icon: <MdDashboard className="text-xl" /> },
+    { name: "AyushPay", icon: <FaRupeeSign className="text-xl" /> },
+    { name: "Bank CSP", icon: <FaUsers className="text-xl" /> },
+    { name: "Banking Services", icon: <AiOutlineBank className="text-xl" />, hasArrow: true },
+    { name: "DTH Connection", icon: <BsBroadcast className="text-xl" /> },
+    { name: "Digi Gold", icon: <HiOutlineCurrencyRupee className="text-xl" /> },
+    { name: "E-Gift Card", icon: <BiSolidGift className="text-xl" /> },
+    { name: "Insurance", icon: <BsShieldCheck className="text-xl" /> },
+    { name: "Loan", icon: <FaUniversity className="text-xl" /> },
+    { name: "OTT Subscriptions", icon: <MdOutlineLiveTv className="text-xl" /> },
+    { name: "Recharge", icon: <MdOutlinePayments className="text-xl" />, hasArrow: true },
+    { name: "Sell & Earn", icon: <IoSettingsOutline className="text-xl" /> },
+    { name: "Add Service", icon: <MdOutlineAddCircleOutline className="text-xl" /> },
+  ];
 
   return (
-    <div className="h-screen w-64 bg-gradient-to-b from-blue-800 to-indigo-900 text-white flex flex-col shadow-xl">
-      <h2 className="text-2xl font-bold p-6 border-b border-white/20">
-        User Panel
-      </h2>
-      <nav className="flex-1 p-4 space-y-3">
-        <NavLink
-          to="/user/home"
-          className={({ isActive }) =>
-            `block px-4 py-2 rounded-lg hover:bg-white/20 ${
-              isActive ? "bg-white/30" : ""
-            }`
-          }
+    <>
+      {/* Mobile toggle button */}
+      <div className="md:hidden p-4 bg-white shadow flex justify-between items-center">
+        <h1 className="text-lg font-semibold">Menu</h1>
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="text-gray-700 focus:outline-none"
         >
-          🏠 Home
-        </NavLink>
-        <NavLink
-          to="/user/profile"
-          className={({ isActive }) =>
-            `block px-4 py-2 rounded-lg hover:bg-white/20 ${
-              isActive ? "bg-white/30" : ""
-            }`
-          }
-        >
-          👤 Profile
-        </NavLink>
-        
-        <NavLink
-          to="/user/settings"
-          className={({ isActive }) =>
-            `block px-4 py-2 rounded-lg hover:bg-white/20 ${
-              isActive ? "bg-white/30" : ""
-            }`
-          }
-        >
-          ⚙️ Settings
-        </NavLink>
-      </nav>
-      <button
-        onClick={handleLogout}
-        className="m-4 px-4 py-2 bg-red-500 hover:bg-red-600 rounded-lg"
+          ☰
+        </button>
+      </div>
+
+      {/* Sidebar */}
+      <aside
+        className={`${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        } md:translate-x-0 fixed md:static top-0 left-0 h-screen w-64 bg-white border-r shadow-lg transform transition-transform duration-300 ease-in-out z-50`}
       >
-        Logout
-      </button>
-    </div>
+        <div className="flex flex-col py-6">
+          <ul className="space-y-1">
+            {menuItems.map((item, index) => (
+              <li
+                key={index}
+                className="flex items-center justify-between px-6 py-3 text-gray-700 hover:text-blue-600 hover:bg-gray-50 cursor-pointer transition-all"
+              >
+                <div className="flex items-center space-x-3">
+                  {item.icon}
+                  <span className="text-sm font-medium">{item.name}</span>
+                </div>
+                {item.hasArrow && <IoIosArrowForward />}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </aside>
+    </>
   );
 };
 
