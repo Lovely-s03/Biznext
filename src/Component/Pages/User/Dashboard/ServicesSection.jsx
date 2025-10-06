@@ -59,9 +59,9 @@ const ServicesSection = () => {
   return (
     <div className="bg-white shadow-md rounded-xl p-4 overflow-hidden mt-5">
       <div className="flex flex-wrap justify-center sm:justify-start gap-4 transition-all duration-500">
-        {services.slice(0, visibleCount).map((service, index) => (
+        {services.slice(0, visibleCount).map((service, index) => (         
           <motion.div
-            key={index}
+            key={index}                                    
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4, delay: index * 0.05 }}
