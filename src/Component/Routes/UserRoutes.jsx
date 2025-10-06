@@ -7,6 +7,7 @@ import Settings from "../Pages/User/Setting";
 import PrivateRoute from "../PrivateRoute";
 import UserDashboard from "../Pages/UserDashboard";
 import Dashboard from "../Pages/User/Dashboard/Dashboard";
+import AyushPay from "../Pages/User/AyushPay";
 
 const UserRoutes = () => {
   return (
@@ -21,6 +22,8 @@ const UserRoutes = () => {
         }
       >
         <Route path="/dashboard" element={<Dashboard/>} />
+        <Route path="/ayushpay" element={<AyushPay />} />
+
         <Route path="home" element={<Home />} />
         <Route path="profile" element={<Profile />} />
         <Route path="settings" element={<Settings />} />
