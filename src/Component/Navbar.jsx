@@ -3,9 +3,13 @@ import { FiMail, FiPhone, FiSearch } from "react-icons/fi";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { GiMoneyStack } from "react-icons/gi";
 import { FaWallet } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import Profile from "../Component/Pages/User/Profile";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const [showProfile, setShowProfile] = useState(false);
 
   return (
     <nav className="w-full bg-white border-b shadow-sm px-4 md:px-8 py-3 flex justify-between items-center">
@@ -53,9 +57,19 @@ const Navbar = () => {
         </div>
 
         {/* Profile Avatar */}
-        <div className="w-9 h-9 flex items-center justify-center rounded-full bg-sky-500 text-white font-semibold text-sm cursor-pointer">
-          AK
+       <div
+        onClick={() => setShowProfile(!showProfile)} // toggle profile
+        className="w-9 h-9 flex items-center justify-center rounded-full bg-sky-500 text-white font-semibold text-sm cursor-pointer hover:scale-110 transition"
+      >
+        SH
+      </div>
+
+      {/* Profile Card - toggle */}
+      {showProfile && (
+        <div className="absolute right-0 top-12 z-50">
+          <Profile />
         </div>
+      )}
 
         {/* Mobile Menu Toggle */}
         <button
