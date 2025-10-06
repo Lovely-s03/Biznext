@@ -6,11 +6,12 @@ import Profile from "../Pages/User/Profile";
 import Settings from "../Pages/User/Setting";
 import PrivateRoute from "../PrivateRoute";
 import UserDashboard from "../Pages/UserDashboard";
+import Dashboard from "../Pages/User/Dashboard/Dashboard";
 
 const UserRoutes = () => {
   return (
     <Routes>
-        
+
       <Route
         path="/"
         element={
@@ -19,6 +20,7 @@ const UserRoutes = () => {
           </PrivateRoute>
         }
       >
+        <Route path="/dashboard" element={<Dashboard/>} />
         <Route path="home" element={<Home />} />
         <Route path="profile" element={<Profile />} />
         <Route path="settings" element={<Settings />} />

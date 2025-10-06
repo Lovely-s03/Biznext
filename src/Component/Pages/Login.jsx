@@ -1,105 +1,3 @@
-// import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import { motion } from "framer-motion";
-// import { useAuth } from "../../Context/AuthContext";
-
-// const Login = () => {
-//   const [username, setUsername] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [error, setError] = useState("");
-//   const { login } = useAuth();
-//   const navigate = useNavigate();
-
-//   const handleLogin = (e) => {
-//     e.preventDefault();
-
-//     if (username === "admin" && password === "admin123") {
-//       login("admin");
-//       navigate("/admin");
-//     } else if (username === "user" && password === "user123") {
-//       login("user");
-//       navigate("/user");
-//     } else {
-//       setError("Invalid credentials");
-//     }
-//   };
-
-//   return (
-//     <div className="relative flex h-screen items-center justify-center overflow-hidden">
-//       {/* 🖼️ Fullscreen Background Image */}
-//       <div className="absolute inset-0 -z-10">
-//         <img
-//           src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80"
-//           alt="AI Background"
-//           className="h-full w-full object-cover"
-//         />
-//         <div className="absolute inset-0 bg-black/60" /> {/* Dark overlay */}
-//       </div>
-
-//       {/* 💠 Login Card */}
-//       <motion.div
-//         initial={{ y: 50, opacity: 0 }}
-//         animate={{ y: 0, opacity: 1 }}
-//         transition={{ duration: 0.8, ease: "easeOut" }}
-//         className="w-full max-w-md rounded-2xl bg-white/10 p-8 shadow-2xl backdrop-blur-xl border border-white/20"
-//       >
-//         <h2 className="mb-6 text-center text-3xl font-bold text-white drop-shadow-lg">
-//           Welcome Back 👋
-//         </h2>
-
-//         {error && (
-//           <p className="mb-4 text-center text-sm text-red-400 font-semibold">
-//             {error}
-//           </p>
-//         )}
-
-//         <form onSubmit={handleLogin} className="space-y-5">
-//           <div>
-//             <input
-//               type="text"
-//               placeholder="👤 Username"
-//               value={username}
-//               onChange={(e) => setUsername(e.target.value)}
-//               required
-//               className="w-full rounded-lg border border-gray-300 bg-white/80 p-3 text-sm text-gray-900 shadow-md focus:border-blue-500 focus:ring-2 focus:ring-blue-400 outline-none transition-all duration-300"
-//             />
-//           </div>
-
-//           <div>
-//             <input
-//               type="password"
-//               placeholder="🔒 Password"
-//               value={password}
-//               onChange={(e) => setPassword(e.target.value)}
-//               required
-//               className="w-full rounded-lg border border-gray-300 bg-white/80 p-3 text-sm text-gray-900 shadow-md focus:border-purple-500 focus:ring-2 focus:ring-purple-400 outline-none transition-all duration-300"
-//             />
-//           </div>
-
-//           <motion.button
-//             whileHover={{ scale: 1.05 }}
-//             whileTap={{ scale: 0.95 }}
-//             type="submit"
-//             className="w-full rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-3 text-white font-semibold shadow-lg hover:shadow-indigo-500/50 transition-all duration-300"
-//           >
-//             Login
-//           </motion.button>
-//         </form>
-
-//         <p className="mt-6 text-center text-sm text-gray-300">
-//           <b>Try:</b>{" "}
-//           <span className="text-blue-400">user/user123</span> OR{" "}
-//           <span className="text-purple-400">admin/admin123</span>
-//         </p>
-//       </motion.div>
-//     </div>
-//   );
-// };
-
-// export default Login;
-
-
-
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
@@ -148,7 +46,7 @@ const Login = () => {
       navigate("/admin");
     } else if (username === "user" && password === "user123") {
       login("user");
-      navigate("/user");
+      navigate("/user/dashboard");
     } else {
       setError("Invalid credentials");
     }
