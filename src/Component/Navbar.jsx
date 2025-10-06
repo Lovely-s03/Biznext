@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FiMail, FiPhone, FiSearch } from "react-icons/fi";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { GiMoneyStack } from "react-icons/gi";
@@ -10,6 +10,23 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const [showProfile, setShowProfile] = useState(false);
+    const profileRef = useRef(null);
+
+
+
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (profileRef.current && !profileRef.current.contains(event.target)) {
+        setShowProfile(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <nav className="w-full bg-white border-b shadow-sm px-4 md:px-8 py-3 flex justify-between items-center">
@@ -58,7 +75,7 @@ const Navbar = () => {
 
         {/* Profile Avatar */}
        <div
-        onClick={() => setShowProfile(!showProfile)} // toggle profile
+        onClick={() => setShowProfile(!showProfile)}
         className="w-9 h-9 flex items-center justify-center rounded-full bg-sky-500 text-white font-semibold text-sm cursor-pointer hover:scale-110 transition"
       >
         SH
@@ -66,7 +83,10 @@ const Navbar = () => {
 
       {/* Profile Card - toggle */}
       {showProfile && (
-        <div className="absolute right-0 top-12 z-50">
+        <div
+          ref={profileRef}
+          className="absolute right-0 top-12 z-50"
+        >
           <Profile />
         </div>
       )}

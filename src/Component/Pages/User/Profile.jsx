@@ -19,7 +19,7 @@ const Profile = () => {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-end py-6 px-6">
       {/* Header */}
-      <div className="w-[350px] bg-white rounded-xl shadow-md p-5">
+      <div className="w-[350px] bg-white rounded-xl  p-5">
         {/* Logo + Welcome */}
         <div className="flex items-center space-x-3 border-b pb-4">
           <img
@@ -59,10 +59,8 @@ const Profile = () => {
             <span className="text-lg font-bold text-gray-900">0</span>
           </div>
         </div>
-      </div>
 
-      {/* Menu Items */}
-    <div className="w-[350px] h-[400px] mt-6 bg-white rounded-xl shadow-md divide-y overflow-y-auto">
+        <div className="w-[350px] h-[400px] mt-6 bg-white rounded-xl shadow-md divide-y overflow-y-auto">
   {[
     { label: "Profile", icon: <FaWallet /> },
     { label: "My Wallet", icon: <FaWallet /> },
@@ -86,13 +84,19 @@ const Profile = () => {
       <span className="text-gray-800 text-sm font-medium">{item.label}</span>
     </div>
   ))}
+
+   <button className="fixed bottom-6 right-6 bg-blue-600 w-14 h-14 rounded-full shadow-lg flex items-center justify-center text-white text-2xl hover:bg-blue-700">
+  <MdHeadset />
+</button>
 </div>
+      </div>
+
+      {/* Menu Items */}
+    
 
 
       {/* Floating Support Button (bottom-right screen) */}
-      <button className="fixed bottom-6 right-6 bg-blue-600 w-14 h-14 rounded-full shadow-lg flex items-center justify-center text-white text-2xl hover:bg-blue-700">
-  <MdHeadset />
-</button>
+     
     </div>
   );
 };
