@@ -79,16 +79,16 @@ const AyushPay = () => {
         />
       </div>
 
-      {/* Phone Number and Register Button Section */}
-      <div className="flex items-center gap-4 w-full max-w-xs">
+
+      <div className="flex flex-col md:flex-row items-center gap-4 w-full max-w-xs">
   <div className="w-full">
     <input
       type="tel"
       placeholder="Enter your phone number"
-      className="w-full px-6 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-center"
+      className="w-full md:w-[250px] px-6 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-center"
     />
   </div>
-  <div className="w-full mt-4 pb-4"> {/* Additional margin-top */}
+  <div className="w-full mt-4 pb-4">
     <button className="px-3 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-200 shadow-md">
       Register
     </button>
