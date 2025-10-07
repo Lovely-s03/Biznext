@@ -20,7 +20,7 @@ const Sidebar = () => {
   const menuItems = [
     { name: "Dashboard", icon: <MdDashboard className="text-xl" />, path: "dashboard" },
     { name: "AyushPay", icon: <FaRupeeSign className="text-xl" />, path: "ayushpay" },
-    { name: "Bank CSP", icon: <FaUsers className="text-xl" />, path: "/bank-csp" },
+    { name: "BankCSP", icon: <FaUsers className="text-xl" />, path: "bankcsp" },
     { name: "Banking Services", icon: <AiOutlineBank className="text-xl" />, hasArrow: true, path: "/banking-services" },
     { name: "DTH Connection", icon: <BsBroadcast className="text-xl" />, path: "/dth" },
     { name: "Digi Gold", icon: <HiOutlineCurrencyRupee className="text-xl" />, path: "/digigold" },
