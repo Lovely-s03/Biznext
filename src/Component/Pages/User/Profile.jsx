@@ -91,11 +91,7 @@ const Profile = () => {
 </div>
       </div>
 
-      {/* Menu Items */}
-    
-
-
-      {/* Floating Support Button (bottom-right screen) */}
+      
      
     </div>
   );
