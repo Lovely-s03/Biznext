@@ -77,7 +77,7 @@ const Profile = () => {
   ].map((item, index) => (
     <div
       key={index}
-      className="flex items-center space-x-3 p-4 hover:bg-gray-50 cursor-pointer"
+      className="flex items-center space-x-3 p-4 hover:bg-blue-500 cursor-pointer"
       onClick={item.onClick}
     >
       <span className="text-gray-600 text-xl">{item.icon}</span>
