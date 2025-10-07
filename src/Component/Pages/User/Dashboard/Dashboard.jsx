@@ -8,7 +8,7 @@ import GrowthAnalysis from './GrowthAnalysis'
 
 const Dashboard = () => {
   return (
-    <div>
+    <div className='overflow-x-hidden'>
         <GreetingCard/>
         <ServicesSection/>
         <DashboardStats/>

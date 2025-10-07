@@ -1,99 +1,162 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { ChevronRight, ChevronLeft } from "lucide-react";
-import aeps from "../../../../assets/aeps.png";
-import money from "../../../../assets/money_transfer.png";
-import recharge from "../../../../assets/recharge.png";
-import bill from "../../../../assets/bill_payments.png";
-import aadhar from "../../../../assets/aadhaar_pay.png";
-import bank from "../../../../assets/bank_account.png";
-import deposit from "../../../../assets/deposit.png";
-import wallet from "../../../../assets/wallet_settlement.png";
-import pan from "../../../../assets/pan_card.png";
-import cash from "../../../../assets/cash_collection.png";
-import lic from "../../../../assets/lic_premium.png";
-import insurance from "../../../../assets/insurance.png";
-import ott from "../../../../assets/ott_subscription.png";
-import eGift from "../../../../assets/e_gift_card.png";
-import sell from "../../../../assets/sell_n_earn.png";
-import dth from "../../../../assets/dth_connection.png";
-import irctc from "../../../../assets/irctc.png";
-import bus from "../../../../assets/bus.png";
-import digigold from "../../../../assets/digigold.png";
-import creditCard from "../../../../assets/credit_card_payment.png";
-import ayushman from "../../../../assets/ayushman_bharat.png";
-import bankCsp from "../../../../assets/bank_csp.png";
+// import React, { useState } from "react";
+// import { FaFingerprint, FaExchangeAlt, FaMobileAlt, FaHandHoldingHeart, FaFileInvoice, FaCreditCard, FaUniversity, FaPiggyBank, FaWallet, FaChevronDown, FaChevronUp, FaTv, FaGift, FaSatelliteDish, FaBusAlt } from "react-icons/fa";
+// import { PiCashRegisterFill } from "react-icons/pi";
+// import { IoUmbrella } from "react-icons/io5";
+// import { BsBagHeart, BsBank2, BsFillCreditCardFill } from "react-icons/bs";
+// import { FaTrainSubway } from "react-icons/fa6";
+// import { AiFillGold } from "react-icons/ai";
+// import { motion, AnimatePresence } from "framer-motion";
 
-const services = [
-  { title: "Aeps", icon: aeps },
-  { title: "Money Transfer", icon: money },
-  { title: "Recharge", icon: recharge },
-  { title: "Bill Payments", icon: bill },
-  { title: "Aadhaar Pay", icon: aadhar },
-  { title: "Bank Account", icon: bank },
-  { title: "Deposit Money", icon: deposit },
-  { title: "Wallet Settlement", icon: wallet },
-  { title: "Pan card", icon: pan },
-  { title: "Cash", icon: cash },
-  { title: "LIC", icon: lic },
-  { title: "Insurance", icon: insurance },
-  { title: "OTT", icon: ott },
-  { title: "E-Gift", icon: eGift },
-  { title: "Sell", icon: sell },
-  { title: "DTH", icon: dth },
-  { title: "IRCTC", icon: irctc },
-  { title: "Bus", icon: bus },
-  { title: "Digi Gold", icon: digigold },
-  { title: "Credit Card", icon: creditCard },
-  { title: "Ayushman", icon: ayushman },
-  { title: "Bank CSP", icon: bankCsp },
-];
+// const ServicesSection = () => {
+//   const [showMore, setShowMore] = useState(false);
+
+//   const services = [
+//     { id: 1, icon: <FaFingerprint size={40} className="text-blue-600" />, title: "AEPS" },
+//     { id: 2, icon: <FaExchangeAlt size={40} className="text-blue-600" />, title: "Money Transfer" },
+//     { id: 3, icon: <FaMobileAlt size={40} className="text-blue-600" />, title: "Recharge" },
+//     { id: 4, icon: <FaFileInvoice size={40} className="text-blue-600" />, title: "Bill Payments" },
+//     { id: 5, icon: <FaCreditCard size={40} className="text-blue-600" />, title: "Aadhaar Pay" },
+//     { id: 6, icon: <FaUniversity size={40} className="text-blue-600" />, title: "Bank Account" },
+//     { id: 7, icon: <FaPiggyBank size={40} className="text-blue-600" />, title: "Deposit Money" },
+//     { id: 8, icon: <FaWallet size={40} className="text-blue-600" />, title: "Wallet Settlement" },
+//     { id: 9, icon: <FaFingerprint size={40} className="text-blue-600" />, title: "Pan Card" },
+//     { id: 10, icon: <PiCashRegisterFill size={40} className="text-blue-600"/>, title: "Cash Collection" },
+//     { id: 11, icon: <FaHandHoldingHeart size={40} className="text-blue-600" />, title: "LIC Premium" },
+//     { id: 12, icon: <IoUmbrella size={40} className="text-blue-600" />, title: "Insurance" },
+//     { id: 13, icon: <FaTv size={40} className="text-blue-600" />, title: "OTT Subscription" },
+//     { id: 14, icon: <FaGift size={40} className="text-blue-600" />, title: "E-Gift Card" },
+//     { id: 15, icon: <BsBagHeart size={40} className="text-blue-600" />, title: "Sell & Earn" },
+//     { id: 16, icon: <FaSatelliteDish size={40} className="text-blue-600" />, title: "DTH Connection" },
+//     { id: 17,  icon: <FaTrainSubway size={40} className="text-blue-600" />, title: "IRCTC" },
+//     { id: 18, icon: <FaBusAlt size={40} className="text-blue-600" />, title: "Bus" },
+//     { id: 19, icon: <AiFillGold size={40} className="text-blue-600" />, title: "Digigold" },
+//     { id: 20, icon: <BsFillCreditCardFill size={40} className="text-blue-600" />, title: "Credit Card" },
+//     { id: 21 , icon: <FaHandHoldingHeart size={40} className="text-blue-600" />, title: "Ayushman Bharat" },
+//     { id: 22, icon: <BsBank2 size={40} className="text-blue-600" />, title: "Bank CSP" },
+//   ];
+
+//   const visibleServices = showMore ? services : services.slice(0, 8);
+
+//   return (
+//     <div className="max-w-[1400px] mx-auto py-4">
+//       <div className="bg-white rounded-xl shadow-md p-4">
+//         {/* Grid */}
+//         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-8 gap-4">
+//           <AnimatePresence>
+//             {visibleServices.map((service) => (
+//               <motion.div
+//                 key={service.id}
+//                 initial={{ opacity: 0, scale: 0.8 }}
+//                 animate={{ opacity: 1, scale: 1 }}
+//                 exit={{ opacity: 0, scale: 0.8 }}
+//                 transition={{ duration: 0.3 }}
+//                 className="flex flex-col items-center justify-center bg-gray-50 rounded-lg p-4 shadow-sm hover:shadow-lg hover:scale-105 transition-transform duration-200"
+//               >
+//                 {service.icon}
+//                 <p className="mt-2 text-gray-800 font-medium text-center">{service.title}</p>
+//               </motion.div>
+//             ))}
+//           </AnimatePresence>
+//         </div>
+
+//         {/* Toggle Button */}
+//         <div className="flex justify-center mt-4">
+//           <motion.button
+//             onClick={() => setShowMore(!showMore)}
+//             className="p-2 bg-white rounded-full shadow-md hover:bg-gray-100 transition"
+//             whileTap={{ scale: 0.9 }}
+//           >
+//             {showMore ? (
+//               <FaChevronUp className="text-gray-600" size={20} />
+//             ) : (
+//               <FaChevronDown className="text-gray-600" size={20} />
+//             )}
+//           </motion.button>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default ServicesSection;
+
+import React, { useState } from "react";
+import { FaFingerprint, FaExchangeAlt, FaMobileAlt, FaHandHoldingHeart, FaFileInvoice, FaCreditCard, FaUniversity, FaPiggyBank, FaWallet, FaChevronDown, FaChevronUp, FaTv, FaGift, FaSatelliteDish, FaBusAlt } from "react-icons/fa";
+import { PiCashRegisterFill } from "react-icons/pi";
+import { IoUmbrella } from "react-icons/io5";
+import { BsBagHeart, BsBank2, BsFillCreditCardFill } from "react-icons/bs";
+import { FaTrainSubway } from "react-icons/fa6";
+import { AiFillGold } from "react-icons/ai";
+import { motion, AnimatePresence } from "framer-motion";
 
 const ServicesSection = () => {
-  const [visibleCount, setVisibleCount] = useState(8);
+  const [showMore, setShowMore] = useState(false);
 
-  const toggleMore = () => {
-    setVisibleCount(visibleCount === 8 ? services.length : 8);
-  };
+  const services = [
+    { id: 1, icon: <FaFingerprint size={40} className="text-blue-600" />, title: "AEPS" },
+    { id: 2, icon: <FaExchangeAlt size={40} className="text-blue-600" />, title: "Money Transfer" },
+    { id: 3, icon: <FaMobileAlt size={40} className="text-blue-600" />, title: "Recharge" },
+    { id: 4, icon: <FaFileInvoice size={40} className="text-blue-600" />, title: "Bill Payments" },
+    { id: 5, icon: <FaCreditCard size={40} className="text-blue-600" />, title: "Aadhaar Pay" },
+    { id: 6, icon: <FaUniversity size={40} className="text-blue-600" />, title: "Bank Account" },
+    { id: 7, icon: <FaPiggyBank size={40} className="text-blue-600" />, title: "Deposit Money" },
+    { id: 8, icon: <FaWallet size={40} className="text-blue-600" />, title: "Wallet Settlement" },
+    { id: 9, icon: <FaFingerprint size={40} className="text-blue-600" />, title: "Pan Card" },
+    { id: 10, icon: <PiCashRegisterFill size={40} className="text-blue-600"/>, title: "Cash Collection" },
+    { id: 11, icon: <FaHandHoldingHeart size={40} className="text-blue-600" />, title: "LIC Premium" },
+    { id: 12, icon: <IoUmbrella size={40} className="text-blue-600" />, title: "Insurance" },
+    { id: 13, icon: <FaTv size={40} className="text-blue-600" />, title: "OTT Subscription" },
+    { id: 14, icon: <FaGift size={40} className="text-blue-600" />, title: "E-Gift Card" },
+    { id: 15, icon: <BsBagHeart size={40} className="text-blue-600" />, title: "Sell & Earn" },
+    { id: 16, icon: <FaSatelliteDish size={40} className="text-blue-600" />, title: "DTH Connection" },
+    { id: 17,  icon: <FaTrainSubway size={40} className="text-blue-600" />, title: "IRCTC" },
+    { id: 18, icon: <FaBusAlt size={40} className="text-blue-600" />, title: "Bus" },
+    { id: 19, icon: <AiFillGold size={40} className="text-blue-600" />, title: "Digigold" },
+    { id: 20, icon: <BsFillCreditCardFill size={40} className="text-blue-600" />, title: "Credit Card" },
+    { id: 21 , icon: <FaHandHoldingHeart size={40} className="text-blue-600" />, title: "Ayushman Bharat" },
+    { id: 22, icon: <BsBank2 size={40} className="text-blue-600" />, title: "Bank CSP" },
+  ];
+
+  const visibleServices = showMore ? services : services.slice(0, 8);
 
   return (
-    <div className="bg-white shadow-md rounded-xl p-4 overflow-hidden mt-5">
-      <div className="flex flex-wrap justify-center sm:justify-start gap-4 transition-all duration-500">
-        {services.slice(0, visibleCount).map((service, index) => (         
-          <motion.div
-            key={index}                                    
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4, delay: index * 0.05 }}
-            whileHover={{
-              scale: 1.05,
-              boxShadow: "0px 6px 15px rgba(0,0,0,0.1)",
-            }}
-            className="flex items-center justify-center w-[130px] h-[120px] rounded-lg shadow-sm cursor-pointer overflow-hidden transition-all"
-          >
-            <motion.img
-              src={service.icon}
-              alt={service.title}
-              className="w-full h-full  "
-              whileHover={{ scale: 1.1 }}
-              transition={{ duration: 0.3 }}
-            />
-          </motion.div>
-        ))}
+    <div className="max-w-[1400px] mx-auto py-6">
+      <motion.div 
+        className="bg-white rounded-xl shadow-md p-6"
+        layout
+      >
+        {/* Grid */}
+        <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-8 gap-4" layout>
+          <AnimatePresence>
+            {visibleServices.map((service) => (
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 20, scale: 0.95 }}
+                transition={{ duration: 0.4 }}
+                className="flex flex-col items-center justify-center bg-gray-50 rounded-lg p-4 shadow-sm hover:shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer"
+              >
+                {service.icon}
+                <p className="mt-2 text-gray-800 font-medium text-center">{service.title}</p>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
 
-        {/* Toggle Arrow */}
-        <motion.button
-          whileTap={{ scale: 0.9 }}
-          onClick={toggleMore}
-          className="flex items-center justify-center w-[50px] h-[120px] rounded-lg bg-gray-50 shadow-sm hover:bg-gray-100 transition"
-        >
-          {visibleCount === 8 ? (
-            <ChevronRight className="text-gray-700" />
-          ) : (
-            <ChevronLeft className="text-gray-700" />
-          )}
-        </motion.button>
-      </div>
+        {/* Toggle Button */}
+        <div className="flex justify-center mt-6">
+          <motion.button
+            onClick={() => setShowMore(!showMore)}
+            className="p-3 bg-white rounded-full shadow-md hover:bg-gray-100 transition"
+            whileTap={{ scale: 0.9 }}
+            animate={{ rotate: showMore ? 180 : 0 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <FaChevronDown className="text-gray-600" size={22} />
+          </motion.button>
+        </div>
+      </motion.div>
     </div>
   );
 };

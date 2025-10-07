@@ -52,7 +52,7 @@ const RewardsSection = () => {
           No Data Available For Chart
         </motion.div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
           {cards.map((card, index) => (
             <motion.div
               key={index}
@@ -61,7 +61,7 @@ const RewardsSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ scale: 1.05 }}
-              className="bg-white shadow-lg hover:shadow-xl rounded-xl p-6 flex items-center justify-between transition-all duration-300 cursor-pointer overflow-hidden"
+              className=" bg-white shadow-lg hover:shadow-xl rounded-xl p-6 flex flex-col md:flex-row items-center justify-between transition-all duration-300 cursor-pointer overflow-hidden"
             >
               <div>
                 <h2 className="text-xl font-extrabold text-gray-900 mb-3">
