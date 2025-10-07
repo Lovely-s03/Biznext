@@ -30,9 +30,7 @@ const UserRoutes = () => {
        
 
 <Route path="/dth" element={<Dth/>} />
-        <Route path="home" element={<Home />} />
-        <Route path="profile" element={<Profile />} />
-        <Route path="settings" element={<Settings />} />
+       
       </Route>
     </Routes>
   );
