@@ -1,7 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
-
 import PrivateRoute from "../PrivateRoute";
 import UserDashboard from "../Pages/UserDashboard";
 import Dashboard from "../Pages/User/Dashboard/Dashboard";
