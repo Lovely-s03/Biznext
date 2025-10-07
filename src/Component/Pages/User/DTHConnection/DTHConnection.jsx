@@ -12,7 +12,6 @@ const DTHConnection = () => {
         <div className="w-10 border-b-2 border-blue-500 ml-2"></div>
       </div>
 
-     
     </div>
   );
 };

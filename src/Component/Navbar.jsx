@@ -5,7 +5,7 @@
   import { FaWallet } from "react-icons/fa";
   import { useNavigate } from "react-router-dom";
   import Profile from "../Component/Pages/User/Profile";
-
+import logo from '../assets/hariflyicon.svg'
   const Navbar = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [showProfile, setShowProfile] = useState(false);
@@ -27,16 +27,11 @@
         {/* Navbar */}
         <nav className="fixed top-0 left-0 w-full bg-white border-b shadow-sm px-4 md:px-8 py-3 flex justify-between items-center z-[60]">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="flex items-center">
-              <div className="text-blue-600 text-3xl font-bold">B</div>
-              <span className="font-semibold text-gray-800 text-xl">
-                iz<span className="text-blue-600">next</span>
-              </span>
-            </div>
-          </div>
-
-          {/* Right Section */}
+        
+        <div >
+                <img src={logo} alt="" className="w-24"/>
+              </div>
+           
           <div className="flex items-center space-x-4">
             {/* Desktop Icons (Hidden on Mobile) */}
             <div className="hidden md:flex items-center space-x-4">
@@ -77,7 +72,7 @@
             {showProfile && (
               <div
                 ref={profileRef}
-                className="absolute right-4 top-14 z-50 bg-white border shadow-lg rounded-lg w-56"
+                className="absolute right-28 top-0 z-50 bg-white border shadow-lg  w-56"
               >
                 <Profile />
               </div>
