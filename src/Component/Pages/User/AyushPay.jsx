@@ -86,7 +86,7 @@ const AyushPay = () => {
     <input
       type="tel"
       placeholder=" phone number"
-      className=" px-6 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-center"
+      className=" w-full md:w-[250px] px-6 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-center"
     />
   </div>
   <div className="w-full mt-4 pb-4"> {/* Additional margin-top */}
