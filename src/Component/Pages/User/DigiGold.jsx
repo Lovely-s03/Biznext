@@ -1,18 +1,12 @@
-import React, { useState } from "react";
-import ayushpay from "../../../assets/ayushpay_banner (1).webp";
-import { PiBankFill } from "react-icons/pi";
+import React from "react";
+import digi from "../../../assets/digi_gold_banner.webp"
 import DateFormate from "./DateFormate";
+import { FaRupeeSign } from "react-icons/fa";
 
-const AyushPay = () => {
-  const [filters, setFilters] = useState({
-    searchTerm: "",
-    fromDate: "",
-    toDate: "",
-    status: "",
-    source: "",
-  });
+const DigiGold = () => {
 
-  const transactions = [
+
+    const transactions = [
     {
       id: 1,
       txnDate: "2024-01-15",
@@ -41,63 +35,58 @@ const AyushPay = () => {
       source: "POS",
     },
   ];
-
-  const handleFilterChange = (e) => {
-    const { name, value } = e.target;
-    setFilters((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSearch = () => {
-    console.log("Applying filters:", filters);
-  };
-
-  // Handle reset filters
-  const handleReset = () => {
-    setFilters({
-      searchTerm: "",
-      fromDate: "",
-      toDate: "",
-      status: "",
-    });
-  };
   return (
-    <div className="flex flex-col  min-h-screen ">
-      <div className="w-full  mx-auto  mt-[45px] bg-white ">
-        <div className="flex items-center gap-3 p-4 border-gray-300 ">
-          <PiBankFill className="text-2xl text-gray-700" />
-          <h2 className="text-lg md:text-xl font-semibold text-gray-800">
-            Ayush Pay
-          </h2>
-          <div className="w-10 border-b-2 border-blue-500 ml-2"></div>
-        </div>
-      </div>
-      <div className="mt-1 w-full  pt-3  p-2 bg-white">
+    <>
+    <div className="w-full  mx-auto  mt-[45px] bg-white ">
+            <div className="flex items-center gap-3 p-4 border-gray-300 ">
+              <FaRupeeSign className="text-2xl text-gray-700" />
+              <h2 className="text-lg md:text-xl font-semibold text-gray-800">
+                Digi Gold
+              </h2>
+              <div className="w-10 border-b-2 border-blue-500 ml-2"></div>
+            </div>
+          </div>
+    <div className="mt-5 flex flex-col items-center justify-center bg-white p-5">
+        
+      {/* Banner Section */}
+      <div className="relative w-full max-w-6xl overflow-hidden rounded-2xl shadow-lg ">
         <img
-          src={ayushpay}
-          alt="AyushPay"
-          className="w-full h-auto rounded-lg shadow-md object-cover"
+          src={digi} // Make sure this image is in your public folder
+          alt="Buy 24K 999 Pure Gold Online"
+          className="w-full h-auto object-cover"
         />
 
-        <div className="flex flex-col md:flex-row gap-0 items-center md:gap-4 w-full lg:max-w-md pb-2">
-          <div className="w-full">
-            <input
-              type="tel"
-              placeholder=" phone number"
-              className="w-full md:w-[250px] px-6 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-center"
-            />
-          </div>
-          <div className="w-full mt-4 pb-4">
-            <button className="w-full px-3 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-200 shadow-md">
-              Register
-            </button>
-          </div>
-        </div>
+        {/* Overlay Text Section */}
+       
       </div>
 
-      <div className=" bg-white rounded-lg  mt-8  ">
+      {/* Form Section */}
+      <div className="flex flex-col md:flex-row gap-4 mt-8 w-full max-w-3xl justify-center">
+        <input
+          type="text"
+          placeholder="Full Name"
+          className="border rounded-xl px-4 py-3 w-full md:w-1/2 focus:ring-2 focus:ring-yellow-400"
+        />
+        <input
+          type="tel"
+          placeholder="Mobile Number"
+          className="border rounded-xl px-4 py-3 w-full md:w-1/2 focus:ring-2 focus:ring-yellow-400"
+        />
+      </div>
+
+      {/* Buttons */}
+      <div className="flex gap-6 mt-6">
+        <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-semibold transition">
+          SHARE LINK
+        </button>
+        <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-semibold transition">
+          OPEN LINK
+        </button>
+      </div>
+      
+      
+    </div>
+     <div className=" bg-white rounded-lg  mt-8  ">
         <DateFormate />
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white border border-gray-200">
@@ -182,8 +171,9 @@ const AyushPay = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
+    
   );
 };
 
-export default AyushPay;
+export default DigiGold;
