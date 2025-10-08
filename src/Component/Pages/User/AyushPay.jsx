@@ -63,9 +63,9 @@ const AyushPay = () => {
     });
   };
   return (
-    <div className="flex flex-col  min-h-screen p-2 bg-gray-50">
-      <div className="w-full  mx-auto  mt-[45px] ">
-        <div className="flex items-center gap-3 p-4 bg-white border-gray-300 ">
+    <div className="flex flex-col  min-h-screen ">
+      <div className="w-full  mx-auto  mt-[45px] bg-white ">
+        <div className="flex items-center gap-3 p-4 border-gray-300 ">
           <PiBankFill className="text-2xl text-gray-700" />
           <h2 className="text-lg md:text-xl font-semibold text-gray-800">
             Ayush Pay
@@ -73,7 +73,7 @@ const AyushPay = () => {
           <div className="w-10 border-b-2 border-blue-500 ml-2"></div>
         </div>
       </div>
-      <div className="mb-8 w-full shadow pt-4">
+      <div className="mb-8 w-full  pt-2">
         <img
           src={ayushpay}
           alt="AyushPay"
@@ -81,7 +81,7 @@ const AyushPay = () => {
         />
       </div>
 
-      <div className="flex items-center gap-4 w-full max-w-xs">
+      <div className="flex flex-col md:flex-row gap-0 items-center md:gap-4 w-full lg:max-w-md">
         <div className="w-full">
           <input
             type="tel"
@@ -90,25 +90,25 @@ const AyushPay = () => {
           />
         </div>
         <div className="w-full mt-4 pb-4">
-          <button className="px-3 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-200 shadow-md">
+          <button className="w-full px-3 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-200 shadow-md">
             Register
           </button>
         </div>
       </div>
 
-      <div className="p-6 bg-white rounded-lg shadow-md">
+      <div className="p-4 bg-white rounded-lg shadow-md">
         {/* Header Section */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-6 gap-4">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center  gap-4">
           <h1 className="text-x font-semibold text-gray-800">
             View Latest Transactions
           </h1>
         </div>
 
         {/* Filters Section */}
-        <div className="bg-gray-50 p-4 rounded-lg mb-6">
-          <div className="bg-gray-50 p-4 rounded-lg mb-6">
+        <div className=" pt-2 rounded-lg mb-6">
+          <div className="  rounded-lg mb-6">
             {/* Single row of filters */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 mb-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-6 gap-4 mb-4">
               {/* Search Input */}
               <div className="lg:col-span-2">
                 <label className=" block text-sm font-medium text-gray-700 mb-1">
@@ -276,7 +276,7 @@ const AyushPay = () => {
         )}
 
         {/* Pagination (optional) */}
-        <div className="flex justify-between items-center mt-6 pb-4">
+        <div className="flex justify-between items-center mt-6 pb-6">
           <div className="text-sm text-gray-700">
             Showing {transactions.length} of {transactions.length} transactions
           </div>
