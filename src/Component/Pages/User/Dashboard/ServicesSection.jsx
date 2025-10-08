@@ -81,7 +81,7 @@
 // export default ServicesSection;
 
 import React, { useState } from "react";
-import { FaFingerprint, FaExchangeAlt, FaMobileAlt, FaHandHoldingHeart, FaFileInvoice, FaCreditCard, FaUniversity, FaPiggyBank, FaWallet, FaChevronDown, FaChevronUp, FaTv, FaGift, FaSatelliteDish, FaBusAlt, FaHandHoldingUsd, FaUndoAlt, FaMoneyCheckAlt, FaShieldAlt } from "react-icons/fa";
+import { FaFingerprint, FaExchangeAlt, FaMobileAlt, FaHandHoldingHeart, FaFileInvoice, FaCreditCard, FaUniversity, FaPiggyBank, FaWallet, FaChevronDown, FaChevronUp, FaTv, FaGift, FaSatelliteDish, FaBusAlt, FaHandHoldingUsd, FaUndoAlt, FaMoneyCheckAlt, FaShieldAlt, FaIdCard, FaHeartbeat } from "react-icons/fa";
 import { PiCashRegisterFill } from "react-icons/pi";
 import { IoUmbrella } from "react-icons/io5";
 import { BsBagHeart, BsBank2, BsFillCreditCardFill } from "react-icons/bs";
@@ -101,10 +101,10 @@ const ServicesSection = () => {
     { id: 6, icon: <FaUniversity size={40} className="text-[#000080]" />, title: "Bank Account" },
     { id: 7, icon: <FaPiggyBank size={40} className="text-[#000080]" />, title: "Deposit Money" },
     { id: 8, icon: <FaWallet size={40} className="text-[#000080]" />, title: "Wallet Settlement" },
-    { id: 9, icon: <FaFingerprint size={40} className="text-[#000080]" />, title: "Pan Card" },
+    { id: 9, icon: <FaIdCard size={40} className="text-[#000080]" />, title: "Pan Card" },
     { id: 10, icon: <PiCashRegisterFill size={40} className="text-[#000080]"/>, title: "Cash Collection" },
     { id: 11, icon: <FaShieldAlt size={40} className="text-[#000080]" />, title: "LIC Premium" },
-    { id: 12, icon: <IoUmbrella size={40} className="text-[#000080]" />, title: "Insurance" },
+    { id: 12, icon: <FaHeartbeat size={40} className="text-[#000080]" />, title: "Insurance" },
     { id: 13, icon: <FaTv size={40} className="text-[#000080]" />, title: "OTT Subscription" },
     { id: 14, icon: <FaGift size={40} className="text-[#000080]" />, title: "E-Gift Card" },
     { id: 15, icon: <BsBagHeart size={40} className="text-[#000080]" />, title: "Sell & Earn" },
@@ -146,7 +146,6 @@ const ServicesSection = () => {
           </AnimatePresence>
         </motion.div>
 
-        {/* Toggle Button */}
         <div className="flex justify-center mt-6">
           <motion.button
             onClick={() => setShowMore(!showMore)}
