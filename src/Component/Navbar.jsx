@@ -61,14 +61,13 @@ import logo from '../assets/hariflyicon.svg'
             </div>
 
             {/* Profile Avatar */}
-            <div
+            {/* <div
               onClick={() => setShowProfile(!showProfile)}
               className="w-9 h-9 flex items-center justify-center rounded-full bg-sky-500 text-white font-semibold text-sm cursor-pointer hover:scale-110 transition"
             >
               SH
             </div>
 
-            {/* Profile Card */}
             {showProfile && (
               <div
                 ref={profileRef}
@@ -76,7 +75,21 @@ import logo from '../assets/hariflyicon.svg'
               >
                 <Profile />
               </div>
-            )}
+            )} */}
+            <div className="relative inline-block group">
+  <div
+    className="w-9 h-9 flex items-center justify-center rounded-full bg-sky-500 text-white font-semibold text-sm cursor-pointer hover:scale-110 transition"
+  >
+    SH
+  </div>
+
+  <div
+    className="absolute top-0 right-20 z-50 w-56 bg-white border shadow-lg rounded-md p-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300"
+  >
+    <Profile />
+  </div>
+</div>
+
 
             {/* Mobile Menu Button */}
             <button
