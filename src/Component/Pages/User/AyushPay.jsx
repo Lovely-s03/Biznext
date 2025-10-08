@@ -73,7 +73,7 @@ const AyushPay = () => {
           <div className="w-10 border-b-2 border-blue-500 ml-2"></div>
         </div>
       </div>
-      <div className="mb-8 w-full  pt-2">
+      <div className="mt-1 w-full  pt-3">
         <img
           src={ayushpay}
           alt="AyushPay"

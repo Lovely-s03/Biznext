@@ -21,7 +21,7 @@ const BankCSP = () => {
       </div>
 
       {/* Top Banner */}
-      <div className="mb-4 w-full  pt-2">
+      <div className="mt-1 w-full  pt-2">
         <img
           src={kiosk}
           alt="Kiosk Banking"
@@ -30,7 +30,7 @@ const BankCSP = () => {
       </div>
 
       {/* Three Bank Logos */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4  mt-5">
         <div className="flex ">
           <img
             src={baroda}
