@@ -66,7 +66,7 @@ const Sidebar = () => {
                 <Link
                   to={item.path}
                   onClick={() => setIsOpen(false)} // close sidebar on click (mobile)
-                  className="flex items-center justify-between px-6 py-3 text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-all"
+                  className="flex items-center justify-between px-6 py-3 text-gray-700 hover:text-[#FFA500]  transition-all"
                 >
                   <div className="flex items-center space-x-3">
                     {item.icon}

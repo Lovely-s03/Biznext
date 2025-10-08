@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext";
 
-// create shards (grid pieces of image)
 const createShards = (rows = 6, cols = 10) => {
   const shards = [];
   const pieceWidth = 100 / cols;
@@ -36,9 +35,22 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { login } = useAuth();
-  const navigate = useNavigate();
+  const { auth, login } = useAuth();
 
+  const navigate = useNavigate();
+ useEffect(() => {
+    if (auth.isAuthenticated) {
+      if (auth.role === "admin") {
+        navigate("/admin");
+      } else if (auth.role === "user") {
+        navigate("/user/dashboard");
+      }
+      return;
+    }
+    const timer = setTimeout(() => setShowLogin(true), 2000);
+    return () => clearTimeout(timer);
+  }, [auth, navigate]);
+  
   const handleLogin = (e) => {
     e.preventDefault();
     if (username === "admin" && password === "admin123") {
@@ -52,14 +64,9 @@ const Login = () => {
     }
   };
 
-  useEffect(() => {
-    const timer = setTimeout(() => setShowLogin(true), 2000);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <div className="relative flex h-screen items-center justify-center overflow-hidden bg-black">
-      {/* 🔹 Shattered Glass Animation */}
+    
       <AnimatePresence>
         {!showLogin &&
           shards.map((shard) => (
@@ -88,7 +95,6 @@ const Login = () => {
           ))}
       </AnimatePresence>
 
-      {/* 🔹 Login Form Reveal */}
       {showLogin && (
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
@@ -96,9 +102,9 @@ const Login = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="relative w-full max-w-md overflow-hidden rounded-3xl bg-white/10 p-8 shadow-2xl backdrop-blur-xl border border-white/20"
         >
-          {/* 🔥 Network-style Animated Background */}
+       
           <div className="absolute inset-0 -z-10 overflow-hidden rounded-3xl">
-            {/* Network Nodes */}
+         
             {Array.from({ length: 20 }).map((_, i) => (
               <motion.div
                 key={i}
@@ -121,7 +127,7 @@ const Login = () => {
                 }}
               />
             ))}
-            {/* Network Lines */}
+           
             {Array.from({ length: 15 }).map((_, i) => (
               <motion.div
                 key={i}
@@ -157,7 +163,7 @@ const Login = () => {
           )}
 
           <form onSubmit={handleLogin} className="space-y-5 relative z-10">
-            {/* Username Field */}
+       
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -173,7 +179,6 @@ const Login = () => {
               />
             </motion.div>
 
-            {/* Password Field – shows only if username is filled */}
             {username && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -191,7 +196,6 @@ const Login = () => {
               </motion.div>
             )}
 
-            {/* Login Button – shows only if password is filled */}
             {password && (
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}

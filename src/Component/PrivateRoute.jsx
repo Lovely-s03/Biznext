@@ -3,11 +3,23 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "../Context/AuthContext";
 
 const PrivateRoute = ({ children, role }) => {
-  const { auth } = useAuth();
+  const { auth, loading } = useAuth(); 
 
-  if (!auth.isAuthenticated) return <Navigate to="/login" />;
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen text-lg font-medium text-gray-600">
+        Loading...
+      </div>
+    );
+  }
 
-  if (role && auth.role !== role) return <Navigate to="/login" />;
+  if (!auth.isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+
+  if (role && auth.role !== role) {
+    return <Navigate to="/login" replace />;
+  }
 
   return children;
 };

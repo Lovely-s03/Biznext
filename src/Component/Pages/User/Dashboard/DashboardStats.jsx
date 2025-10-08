@@ -10,22 +10,22 @@ const DashboardStats = () => {
     {
       title: "Total Income",
       value: 0,
-      icon: <FaHandHoldingUsd className="text-5xl text-blue-700" />,
+      icon: <FaHandHoldingUsd className="text-5xl text-[#000080]" />,
     },
     {
       title: "Transaction Volume",
       value: 0,
-      icon: <FaChartLine className="text-5xl text-blue-700" />,
+      icon: <FaChartLine className="text-5xl text-[#000080]" />,
     },
     {
       title: "Count",
       value: 0,
-      icon: <FaCalculator className="text-5xl text-blue-700" />,
+      icon: <FaCalculator className="text-5xl text-[#000080]" />,
     },
     {
       title: "Complaints",
       value: 0,
-      icon: <FaComments className="text-5xl text-blue-700" />,
+      icon: <FaComments className="text-5xl text-[#000080]" />,
     },
   ];
 
@@ -39,7 +39,7 @@ const DashboardStats = () => {
             onClick={() => setActive(filter)}
             className={`px-4 py-2 rounded-md font-medium transition-all duration-200 ${
               active === filter
-                ? "bg-indigo-800 text-white"
+                ? "bg-[#000080] text-white"
                 : "bg-blue-500 text-white hover:bg-blue-600"
             }`}
           >
