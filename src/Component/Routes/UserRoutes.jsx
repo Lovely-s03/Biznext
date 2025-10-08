@@ -9,6 +9,8 @@ import AyushPay from "../Pages/User/AyushPay";
 import BankCSP from "../Pages/User/BankCSP";
 import DTHConnection from "../Pages/User/DTHConnection/DTHConnection";
 import Dth from "../Pages/User/DTHConnection/Dth";
+import DigiGold from "../Pages/User/DigiGold";
+import Loan from "../Pages/User/Loan";
 
 const UserRoutes = () => {
   return (
@@ -25,6 +27,10 @@ const UserRoutes = () => {
         <Route path="/dashboard" element={<Dashboard/>} />
         <Route path="/ayushpay" element={<AyushPay />} />
         <Route path="/bankcsp" element={<BankCSP/>}/>
+        <Route path="/bankcsp" element={<BankCSP/>}/>
+        <Route path="/digigold" element={<DigiGold/>} />
+        <Route path="/loan" element={<Loan/>} />
+
 
 
        
