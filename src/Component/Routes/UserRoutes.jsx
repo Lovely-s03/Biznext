@@ -14,7 +14,7 @@ import SellEarn from "../Pages/User/SellEarn/SellEarn";
 import DigiGold from "../Pages/User/DigiGold";
 import Loan from "../Pages/User/Loan";
 import Mobile from "../Pages/User/Mobile";
-import Dth from "../Pages/User/DTHConnection/Dth";
+
 import TaxFiling from "../Pages/User/TaxFiling";
 import DthRecharge from "../Pages/User/DthRecharge";
 
