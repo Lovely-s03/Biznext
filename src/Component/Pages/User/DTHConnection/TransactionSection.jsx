@@ -9,7 +9,7 @@ const TransactionSection = () => {
   const [search, setSearch] = useState("");
 
   return (
-    <div className="pb-5 max-w-7xl mx-auto bg-gray-100">
+    <div className=" max-w-7xl mx-auto bg-gray-100 mt-5">
     
 <div className="bg-gray-200 p-4 shadow rounded-md">
   <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-7 gap-2 xl:gap-4">
