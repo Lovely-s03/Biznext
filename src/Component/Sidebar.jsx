@@ -48,7 +48,7 @@ const Sidebar = () => {
         { name: "DTH", path: "recharge/dth" },
       ],
     },
-    { name: "Sell & Earn", icon: <IoSettingsOutline className="text-xl" />, path: "/sell-earn" },
+    { name: "Sell & Earn", icon: <IoSettingsOutline className="text-xl" />, path: "sellearn" },
     { name: "TaxFiling", icon: <FaFileInvoiceDollar className="text-xl" />, path: "TaxFiling" },
     { name: "Recharge", icon: <MdOutlinePayments className="text-xl" />, hasArrow: true, path: "/recharge" },
     { name: "Sell & Earn", icon: <IoSettingsOutline className="text-xl" />, path: "sellearn" },
