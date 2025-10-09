@@ -84,7 +84,7 @@ const DTHPlansSection = () => {
   const [showPlans, setShowPlans] = useState(false);
 
   return (
-    <div className="bg-gray-100 py-5">
+    <div className="bg-gray-100 pt-5">
       {/* White section with DTH plans */}
       <div className="max-w-7xl mx-auto bg-white rounded-lg shadow">
         <div className="grid gap-3 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-5 pt-8">

@@ -7,6 +7,10 @@ import UserDashboard from "../Pages/UserDashboard";
 import Dashboard from "../Pages/User/Dashboard/Dashboard";
 import AyushPay from "../Pages/User/AyushPay";
 import BankCSP from "../Pages/User/BankCSP";
+import DTHConnection from "../Pages/User/DTHConnection/DTHConnection";
+import Dth from "../Pages/User/DTHConnection/Dth";
+import Ott from "../Pages/User/OttSubscription/Ott";
+import SellEarn from "../Pages/User/SellEarn/SellEarn";
 import DigiGold from "../Pages/User/DigiGold";
 import Loan from "../Pages/User/Loan";
 import Mobile from "../Pages/User/Mobile";
@@ -42,6 +46,9 @@ const UserRoutes = () => {
 
 <Route path="/recharge/dth" element={<DthRecharge/>} />
        
+<Route path="/dth" element={<Dth/>} />
+  <Route path="/ottsubscription" element={<Ott/>} /> 
+  <Route path="/sellearn" element={<SellEarn/>} />     
       </Route>
     </Routes>
   );
