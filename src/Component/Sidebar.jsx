@@ -27,9 +27,9 @@ const Sidebar = () => {
     { name: "E-Gift Card", icon: <BiSolidGift className="text-xl" />, path: "/giftcard" },
     { name: "Insurance", icon: <BsShieldCheck className="text-xl" />, path: "/insurance" },
     { name: "Loan", icon: <FaUniversity className="text-xl" />, path: "/loan" },
-    { name: "OTT Subscriptions", icon: <MdOutlineLiveTv className="text-xl" />, path: "/ott" },
+    { name: "OTT Subscriptions", icon: <MdOutlineLiveTv className="text-xl" />, path: "ottsubscription" },
     { name: "Recharge", icon: <MdOutlinePayments className="text-xl" />, hasArrow: true, path: "/recharge" },
-    { name: "Sell & Earn", icon: <IoSettingsOutline className="text-xl" />, path: "/sell-earn" },
+    { name: "Sell & Earn", icon: <IoSettingsOutline className="text-xl" />, path: "sellearn" },
     { name: "Add Service", icon: <MdOutlineAddCircleOutline className="text-xl" />, path: "/add-service" },
   ];
 
