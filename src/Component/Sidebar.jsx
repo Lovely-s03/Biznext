@@ -32,12 +32,12 @@ const Sidebar = () => {
     { name: "Digi Gold", icon: <HiOutlineCurrencyRupee className="text-xl" />, path: "/digigold" },
     { name: "E-Gift Card", icon: <BiSolidGift className="text-xl" />, path: "/giftcard" },
     { name: "Insurance", icon: <BsShieldCheck className="text-xl" />, path: "/insurance" },
-    { name: "Loan", icon: <FaUniversity className="text-xl" />, path: "/loan" },
+    { name: "Loan", icon: <FaUniversity className="text-xl" />, path: "loan" },
     { name: "OTT Subscriptions", icon: <MdOutlineLiveTv className="text-xl" />, path: "ottsubscription" },
     { name: "Digi Gold", icon: <HiOutlineCurrencyRupee className="text-xl" />, path: "digigold" },
     { name: "E-Gift Card", icon: <BiSolidGift className="text-xl" />, path: "/giftcard" },
     { name: "Insurance", icon: <BsShieldCheck className="text-xl" />, path: "/insurance" },
-    { name: "Loan", icon: <FaUniversity className="text-xl" />, path: "loan" },
+ 
    
     {
       name: "Recharge",
