@@ -6,7 +6,7 @@ import {
   MdOutlineLiveTv,
   MdOutlineAddCircleOutline,
 } from "react-icons/md";
-import { FaUsers, FaUniversity, FaRupeeSign } from "react-icons/fa";
+import { FaUsers, FaUniversity, FaRupeeSign, FaBus } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
 import { BsBroadcast, BsShieldCheck } from "react-icons/bs";
 import { HiOutlineCurrencyRupee } from "react-icons/hi";
@@ -30,13 +30,13 @@ const Sidebar = () => {
     { name: "Banking Services", icon: <AiOutlineBank className="text-xl" />, hasArrow: true, path: "/banking-services" },
     { name: "DTH Connection", icon: <BsBroadcast className="text-xl" />, path: "dth" },
     { name: "Digi Gold", icon: <HiOutlineCurrencyRupee className="text-xl" />, path: "digigold" },
-    { name: "E-Gift Card", icon: <BiSolidGift className="text-xl" />, path: "/giftcard" },
+    // { name: "E-Gift Card", icon: <BiSolidGift className="text-xl" />, path: "/giftcard" },
     { name: "Insurance", icon: <BsShieldCheck className="text-xl" />, path: "/insurance" },
     { name: "Loan", icon: <FaUniversity className="text-xl" />, path: "loan" },
     { name: "OTT Subscriptions", icon: <MdOutlineLiveTv className="text-xl" />, path: "ottsubscription" },
   
-    { name: "E-Gift Card", icon: <BiSolidGift className="text-xl" />, path: "/giftcard" },
-    { name: "Insurance", icon: <BsShieldCheck className="text-xl" />, path: "/insurance" },
+    // { name: "E-Gift Card", icon: <BiSolidGift className="text-xl" />, path: "/giftcard" },
+    // { name: "Insurance", icon: <BsShieldCheck className="text-xl" />, path: "/insurance" },
  
    
     {
@@ -50,6 +50,15 @@ const Sidebar = () => {
     },
     { name: "Sell & Earn", icon: <IoSettingsOutline className="text-xl" />, path: "sellearn" },
     { name: "TaxFiling", icon: <FaFileInvoiceDollar className="text-xl" />, path: "TaxFiling" },
+    {
+      name: "Travel",
+      icon: <FaBus className="text-xl" />,
+      hasArrow: true,
+      subMenu: [
+        { name: "Bus", path: "travel" }
+        
+      ],
+    },
    
     { name: "Add Service", icon: <MdOutlineAddCircleOutline className="text-xl" />, path: "/add-service" },
   ];
