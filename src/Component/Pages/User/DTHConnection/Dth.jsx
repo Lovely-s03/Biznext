@@ -7,7 +7,7 @@ import TransactionSection from './TransactionSection'
 const Dth = () => {
   return (
     <div>
-        <DTHConnection/>
+    <DTHConnection/>
      <DTHPlansSection/>
      <TransactionSection/>
     </div>
