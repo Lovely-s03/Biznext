@@ -1,7 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
-
 import PrivateRoute from "../PrivateRoute";
 import UserDashboard from "../Pages/UserDashboard";
 import Dashboard from "../Pages/User/Dashboard/Dashboard";
@@ -17,11 +16,11 @@ import Mobile from "../Pages/User/Mobile";
 
 import TaxFiling from "../Pages/User/TaxFiling";
 import DthRecharge from "../Pages/User/DthRecharge";
+import Insurance from "../Pages/User/Insurance";
 
 const UserRoutes = () => {
   return (
     <Routes>
-
       <Route
         path="/"
         element={
@@ -30,25 +29,22 @@ const UserRoutes = () => {
           </PrivateRoute>
         }
       >
-        <Route path="/dashboard" element={<Dashboard/>} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/ayushpay" element={<AyushPay />} />
-        <Route path="/bankcsp" element={<BankCSP/>}/>
-        <Route path="/bankcsp" element={<BankCSP/>}/>
-        <Route path="/digigold" element={<DigiGold/>} />
-        <Route path="/loan" element={<Loan/>} />
-        <Route path="/recharge/mobile" element={<Mobile/>} />
-        <Route path="/dth" element={<Dth/>} />
+        <Route path="/bankcsp" element={<BankCSP />} />
+        <Route path="/bankcsp" element={<BankCSP />} />
+        <Route path="/digigold" element={<DigiGold />} />
+        <Route path="/loan" element={<Loan />} />
+        <Route path="/recharge/mobile" element={<Mobile />} />
+        <Route path="/dth" element={<Dth />} />
         <Route path="/taxfiling" element={<TaxFiling />} />
 
+        <Route path="/recharge/dth" element={<DthRecharge />} />
 
-
-       
-
-<Route path="/recharge/dth" element={<DthRecharge/>} />
-       
-<Route path="/dth" element={<Dth/>} />
-  <Route path="/ottsubscription" element={<Ott/>} /> 
-  <Route path="/sellearn" element={<SellEarn/>} />     
+        <Route path="/dth" element={<Dth />} />
+        <Route path="/ottsubscription" element={<Ott />} />
+        <Route path="/sellearn" element={<SellEarn />} />
+        <Route path="/insurance" element={<Insurance />} />
       </Route>
     </Routes>
   );
