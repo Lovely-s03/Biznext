@@ -17,6 +17,7 @@ import Mobile from "../Pages/User/Mobile";
 import TaxFiling from "../Pages/User/TaxFiling";
 import DthRecharge from "../Pages/User/DthRecharge";
 import Insurance from "../Pages/User/Insurance";
+import Travel from "../Pages/User/Travel/Travel";
 
 const UserRoutes = () => {
   return (
@@ -45,6 +46,14 @@ const UserRoutes = () => {
         <Route path="/ottsubscription" element={<Ott />} />
         <Route path="/sellearn" element={<SellEarn />} />
         <Route path="/insurance" element={<Insurance />} />
+
+       
+
+<Route path="/recharge/dth" element={<DthRecharge/>} />
+  <Route path="/travel" element={<Travel/>} />     
+<Route path="/dth" element={<Dth/>} />
+  <Route path="/ottsubscription" element={<Ott/>} /> 
+  <Route path="/sellearn" element={<SellEarn/>} />     
       </Route>
     </Routes>
   );

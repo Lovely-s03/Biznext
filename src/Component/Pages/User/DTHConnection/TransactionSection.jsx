@@ -51,7 +51,6 @@ const TransactionSection = () => {
       />
     </div>
 
-    {/* Transaction ID / Mobile */}
     <div className="flex flex-col md:col-span-3">
       <label className="text-sm text-gray-500 mb-1">
         Transaction Id or Mobile Number
