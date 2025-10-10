@@ -21,6 +21,7 @@ import Travel from "../Pages/User/Travel/Travel";
 import MoneyTransfer from "../Pages/User/MoneyTransfer";
 import Aadhar from "../Pages/User/Aadhar";
 import Aeps from "../Pages/User/Aeps";
+import AddService from "../Pages/User/AddService/AddService";
 
 const UserRoutes = () => {
   return (
@@ -59,7 +60,8 @@ const UserRoutes = () => {
   <Route path="/travel" element={<Travel/>} />     
 <Route path="/dth" element={<Dth/>} />
   <Route path="/ottsubscription" element={<Ott/>} /> 
-  <Route path="/sellearn" element={<SellEarn/>} />     
+  <Route path="/sellearn" element={<SellEarn/>} />  
+    <Route path="/addservice" element={<AddService/>} />    
       </Route>
     </Routes>
   );
