@@ -67,7 +67,7 @@ const TaxFiling = () => {
         {/* Submit Button */}
         <div className="flex justify-center mt-6">
           <button className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-10 rounded-full shadow-lg transition w-full sm:w-auto">
-            Recharge
+            PROCEED
           </button>
         </div>
       </div>

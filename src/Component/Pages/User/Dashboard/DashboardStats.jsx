@@ -40,7 +40,7 @@ const DashboardStats = () => {
             className={`px-4 py-2 rounded-md font-medium transition-all duration-200 ${
               active === filter
                 ? "bg-[#000080] text-white"
-                : "bg-blue-500 text-white hover:bg-blue-600"
+                : "bg-orange-500 text-white  hover:bg-[#029909]"
             }`}
           >
             {filter}
