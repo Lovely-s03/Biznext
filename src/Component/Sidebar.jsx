@@ -24,7 +24,7 @@ const Sidebar = () => {
 
   const menuItems = [
     { name: "Dashboard", icon: <MdDashboard className="text-xl" />, path: "dashboard" },
-    { name: "AyushPay", icon: <FaRupeeSign className="text-xl" />, path: "ayushpay" },
+    { name: "HariflyPay", icon: <FaRupeeSign className="text-xl" />, path: "ayushpay" },
     { name: "BankCSP", icon: <FaUsers className="text-xl" />, path: "bankcsp" },
 
     // ✅ Banking Services with dropdown
@@ -136,7 +136,7 @@ const Sidebar = () => {
                   <Link
                     to={item.path}
                     onClick={() => setIsOpen(false)}
-                    className="flex items-center justify-between px-6 py-3 text-gray-700 hover:text-[#FFA500] transition-all"
+                    className="flex items-center justify-between px-6 py-3 text-gray-700 hover:text-[#f97316] transition-all"
                   >
                     <div className="flex items-center space-x-3">
                       {item.icon}
