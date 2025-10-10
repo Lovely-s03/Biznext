@@ -65,7 +65,7 @@ const Sidebar = () => {
       subMenu: [{ name: "Bus", path: "travel" }],
     },
 
-    { name: "Add Service", icon: <MdOutlineAddCircleOutline className="text-xl" />, path: "/add-service" },
+    { name: "Add Service", icon: <MdOutlineAddCircleOutline className="text-xl" />, path: "addservice" },
   ];
 
   return (
