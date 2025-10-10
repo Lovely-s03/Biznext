@@ -54,7 +54,7 @@ const statusClass = {
 };
 
   const handleClick = () => {
-    navigate("/banking/aadhar-pay"); // 👈 your target route
+    navigate("/user/banking/aadhar-pay"); // 👈 your target route
   };
 
 

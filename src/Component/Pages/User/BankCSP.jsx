@@ -31,6 +31,15 @@ const BankCSP = () => {
 
       {/* Three Bank Logos */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4  mt-5">
+
+        <div className="flex ">
+          <img
+            src={sbi}
+            alt="SBI Bank"
+            className=""
+          />
+        </div>
+        
         <div className="flex ">
           <img
             src={baroda}
@@ -55,13 +64,7 @@ const BankCSP = () => {
           />
         </div>
 
-        <div className="flex ">
-          <img
-            src={sbi}
-            alt="SBI Bank"
-            className=""
-          />
-        </div>
+        
       </div>
     </div>
   );

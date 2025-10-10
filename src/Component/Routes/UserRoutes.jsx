@@ -21,6 +21,7 @@ import Travel from "../Pages/User/Travel/Travel";
 import MoneyTransfer from "../Pages/User/MoneyTransfer";
 import Aadhar from "../Pages/User/Aadhar";
 import Aeps from "../Pages/User/Aeps";
+import CreditCard from "../Pages/User/CreditCard";
 
 const UserRoutes = () => {
   return (
@@ -50,8 +51,9 @@ const UserRoutes = () => {
         <Route path="/sellearn" element={<SellEarn />} />
         <Route path="/insurance" element={<Insurance />} />
         <Route path="banking/money-transfer" element={<MoneyTransfer />} />
-        <Route path="banking/aadhar-pay" element={<Aadhar />} />
+        <Route path="/banking/aadhar-pay" element={<Aadhar />} />
         <Route path="banking/aeps" element={<Aeps />} />
+        <Route path="creditCard" element={<CreditCard />} />
 
        
 

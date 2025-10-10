@@ -6,34 +6,80 @@ import { BsBagHeart, BsBank2, BsFillCreditCardFill } from "react-icons/bs";
 import { FaTrainSubway } from "react-icons/fa6";
 import { AiFillGold } from "react-icons/ai";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from 'react-router-dom';
 
 const ServicesSection = () => {
   const [showMore, setShowMore] = useState(false);
+   const navigate = useNavigate();
 
+   const handleClick = () => {
+    navigate("/user/banking/money-transfer"); // target new page route
+  };
+
+   const handleClick1 = () => {
+    navigate("/user/recharge/mobile"); // target new page route
+  };
+
+    const handleClick2 = () => {
+    navigate("/user/banking/aadhar-pay"); // target new page route
+  };
+   const handleClick3 = () => {
+    navigate("/user/dth"); // target new page route
+  };
+   const handleClick4 = () => {
+    navigate("/user/ottsubscription"); // target new page route
+  };
+   const handleClick5 = () => {
+    navigate("/user/insurance"); // target new page route
+  };
+   const handleClick6 = () => {
+    navigate("/user/loan"); // target new page route
+  };
+  const handleClick7 = () => {
+    navigate("/user/travel"); // target new page route
+  };
+  const handleClick8 = () => {
+    navigate("/user/digigold"); // target new page route
+  };
+  const handleClick9 = () => {
+    navigate("/user/sellearn"); // target new page route
+  };
+  const handleClick10 = () => {
+    navigate("/user/bankcsp"); // target new page route
+  };
+  const handleClick11 = () => {
+    navigate("/user/creditCard"); // target new page route
+  };
   const services = [
     { id: 1, icon: <FaFingerprint size={40} className="text-[#000080]" />, title: "AEPS" },
-    { id: 2, icon: <FaExchangeAlt size={40} className="text-[#000080]" />, title: "Money Transfer" },
-    { id: 3, icon: <FaMobileAlt size={40} className="text-[#000080]" />, title: "Recharge" },
+     { id: 20, icon: <BsFillCreditCardFill size={40} className="text-[#000080]" onClick={handleClick11}/>, title: "Credit Card" },
+    { id: 2, icon: <FaExchangeAlt size={40} className="text-[#000080]" onClick={handleClick} />, title: "Money Transfer" },
+    { id: 3, icon: <FaMobileAlt size={40} className="text-[#000080]" onClick={handleClick1} />, title: "Recharge" },
+    { id: 5, icon: <FaCreditCard size={40} className="text-[#000080]" onClick={handleClick2} />, title: "Aadhaar Pay" },
+    { id: 16, icon: <FaSatelliteDish size={40} className="text-[#000080]" onClick={handleClick3} />, title: "DTH Connection" },
+    { id: 13, icon: <FaTv size={40} className="text-[#000080]" onClick={handleClick4} />, title: "OTT Subscription" },
+    { id: 12, icon: <FaHeartbeat size={40} className="text-[#000080]" onClick={handleClick5} />, title: "Insurance" },
+      { id: 23, icon: <FaHandHoldingUsd size={40} className="text-[#000080]" onClick={handleClick6} />, title: "Loan" },
+    { id: 18, icon: <FaBusAlt size={40} className="text-[#000080]" onClick={handleClick7} />, title: "Bus" },
+    { id: 19, icon: <AiFillGold size={40} className="text-[#000080]" onClick={handleClick8} />, title: "Digigold" },
+    { id: 15, icon: <BsBagHeart size={40} className="text-[#000080]" onClick={handleClick9} />, title: "Sell & Earn" },
+    { id: 22, icon: <BsBank2 size={40} className="text-[#000080]" onClick={handleClick10} />, title: "Bank CSP" },
+   
+
+
+    
+    
     { id: 4, icon: <FaFileInvoice size={40} className="text-[#000080]" />, title: "Bill Payments" },
-    { id: 5, icon: <FaCreditCard size={40} className="text-[#000080]" />, title: "Aadhaar Pay" },
     { id: 6, icon: <FaUniversity size={40} className="text-[#000080]" />, title: "Bank Account" },
     { id: 7, icon: <FaPiggyBank size={40} className="text-[#000080]" />, title: "Deposit Money" },
     { id: 8, icon: <FaWallet size={40} className="text-[#000080]" />, title: "Wallet Settlement" },
     { id: 9, icon: <FaIdCard size={40} className="text-[#000080]" />, title: "Pan Card" },
     { id: 10, icon: <PiCashRegisterFill size={40} className="text-[#000080]"/>, title: "Cash Collection" },
     { id: 11, icon: <FaShieldAlt size={40} className="text-[#000080]" />, title: "LIC Premium" },
-    { id: 12, icon: <FaHeartbeat size={40} className="text-[#000080]" />, title: "Insurance" },
-    { id: 13, icon: <FaTv size={40} className="text-[#000080]" />, title: "OTT Subscription" },
-    { id: 14, icon: <FaGift size={40} className="text-[#000080]" />, title: "E-Gift Card" },
-    { id: 15, icon: <BsBagHeart size={40} className="text-[#000080]" />, title: "Sell & Earn" },
-    { id: 16, icon: <FaSatelliteDish size={40} className="text-[#000080]" />, title: "DTH Connection" },
+    // { id: 14, icon: <FaGift size={40} className="text-[#000080]" />, title: "E-Gift Card" },
+    
     { id: 17,  icon: <FaTrainSubway size={40} className="text-[#000080]" />, title: "IRCTC" },
-    { id: 18, icon: <FaBusAlt size={40} className="text-[#000080]" />, title: "Bus" },
-    { id: 19, icon: <AiFillGold size={40} className="text-[#000080]" />, title: "Digigold" },
-    { id: 20, icon: <BsFillCreditCardFill size={40} className="text-[#000080]" />, title: "Credit Card" },
     { id: 21 , icon: <FaHandHoldingHeart size={40} className="text-[#000080]" />, title: "Ayushman Bharat" },
-    { id: 22, icon: <BsBank2 size={40} className="text-[#000080]" />, title: "Bank CSP" },
-      { id: 23, icon: <FaHandHoldingUsd size={40} className="text-[#000080]" />, title: "Loan" },
         { id: 24, icon: <FaMoneyCheckAlt size={40} className="text-[#000080]" />, title: "Loan Repay" },
   ];
 
