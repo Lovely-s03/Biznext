@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaRupeeSign, FaEquals, FaUniversity, FaTrain, FaUsers } from "react-icons/fa";
+import { FaRupeeSign, FaEquals, FaUniversity, FaTrain, FaUsers, FaSatelliteDish, FaShoppingCart } from "react-icons/fa";
 import axis from "../../../../assets/upload_1_638811635039160031-axis cdm.jpeg";
 import airtel from "../../../../assets/upload_1_638545633414347738-Airtel HD 1.jpg";
 import printer from "../../../../assets/upload_1_637459704613886810-Print Device Images.png";
@@ -211,7 +211,14 @@ const AddService = () => {
   ];
 
   return (
-    <section className="w-full mt-20">
+    <section className="w-full mt-16">
+      <div className="flex items-center gap-3 p-4 bg-white border-gray-300 ">
+              <FaShoppingCart className="text-2xl text-gray-700" />
+              <h2 className="text-lg md:text-xl font-semibold text-gray-800">
+               Service Packs
+              </h2>
+              <div className="w-10 border-b-2 border-[#000080] ml-2"></div>
+            </div>
       {/* TAB BAR */}
       <div className="w-full flex justify-center items-center bg-gray-100 py-4">
         <div className="w-full  bg-white shadow-md rounded-md overflow-x-auto">
