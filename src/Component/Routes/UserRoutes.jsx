@@ -18,6 +18,9 @@ import TaxFiling from "../Pages/User/TaxFiling";
 import DthRecharge from "../Pages/User/DthRecharge";
 import Insurance from "../Pages/User/Insurance";
 import Travel from "../Pages/User/Travel/Travel";
+import MoneyTransfer from "../Pages/User/MoneyTransfer";
+import Aadhar from "../Pages/User/Aadhar";
+import Aeps from "../Pages/User/Aeps";
 
 const UserRoutes = () => {
   return (
@@ -46,6 +49,9 @@ const UserRoutes = () => {
         <Route path="/ottsubscription" element={<Ott />} />
         <Route path="/sellearn" element={<SellEarn />} />
         <Route path="/insurance" element={<Insurance />} />
+        <Route path="banking/money-transfer" element={<MoneyTransfer />} />
+        <Route path="banking/aadhar-pay" element={<Aadhar />} />
+        <Route path="banking/aeps" element={<Aeps />} />
 
        
 

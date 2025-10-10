@@ -11,7 +11,6 @@ import { IoIosArrowForward } from "react-icons/io";
 import { BsBroadcast, BsShieldCheck } from "react-icons/bs";
 import { HiOutlineCurrencyRupee } from "react-icons/hi";
 import { AiOutlineBank } from "react-icons/ai";
-import { BiSolidGift } from "react-icons/bi";
 import { IoSettingsOutline } from "react-icons/io5";
 import { FaFileInvoiceDollar } from "react-icons/fa";
 
@@ -27,16 +26,25 @@ const Sidebar = () => {
     { name: "Dashboard", icon: <MdDashboard className="text-xl" />, path: "dashboard" },
     { name: "AyushPay", icon: <FaRupeeSign className="text-xl" />, path: "ayushpay" },
     { name: "BankCSP", icon: <FaUsers className="text-xl" />, path: "bankcsp" },
-    { name: "Banking Services", icon: <AiOutlineBank className="text-xl" />, hasArrow: true, path: "/banking-services" },
+
+    // ✅ Banking Services with dropdown
+    {
+      name: "Banking Services",
+      icon: <AiOutlineBank className="text-xl" />,
+      hasArrow: true,
+      subMenu: [
+        { name: "AEPS", path: "banking/aeps" },
+        { name: "Money Transfer", path: "banking/money-transfer" },
+        { name: "Aadhar Pay", path: "banking/aadhar-pay" },
+      ],
+    },
+
     { name: "DTH Connection", icon: <BsBroadcast className="text-xl" />, path: "dth" },
     { name: "Digi Gold", icon: <HiOutlineCurrencyRupee className="text-xl" />, path: "digigold" },
-    // { name: "E-Gift Card", icon: <BiSolidGift className="text-xl" />, path: "/giftcard" },
     { name: "Insurance", icon: <BsShieldCheck className="text-xl" />, path: "insurance" },
     { name: "Loan", icon: <FaUniversity className="text-xl" />, path: "loan" },
     { name: "OTT Subscriptions", icon: <MdOutlineLiveTv className="text-xl" />, path: "ottsubscription" },
 
- 
-   
     {
       name: "Recharge",
       icon: <MdOutlinePayments className="text-xl" />,
@@ -46,18 +54,17 @@ const Sidebar = () => {
         { name: "DTH", path: "recharge/dth" },
       ],
     },
+
     { name: "Sell & Earn", icon: <IoSettingsOutline className="text-xl" />, path: "sellearn" },
     { name: "TaxFiling", icon: <FaFileInvoiceDollar className="text-xl" />, path: "TaxFiling" },
+
     {
       name: "Travel",
       icon: <FaBus className="text-xl" />,
       hasArrow: true,
-      subMenu: [
-        { name: "Bus", path: "travel" }
-        
-      ],
+      subMenu: [{ name: "Bus", path: "travel" }],
     },
-   
+
     { name: "Add Service", icon: <MdOutlineAddCircleOutline className="text-xl" />, path: "/add-service" },
   ];
 
