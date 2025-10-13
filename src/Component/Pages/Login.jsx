@@ -398,18 +398,20 @@ export default function BiznextIRCTCLogin() {
         </div>
 
         {/* RIGHT SECTION */}
-        <div className="md:w-1/2 bg-white flex flex-col justify-center items-center ">
+        <div className="md:w-1/2 flex flex-col justify-center items-center sh rounded-lg shadow-lg p-8">
           <h2 className="text-2xl font-bold mb-6">
-            Welcome To <span className="text-green-600">Hariyfly</span>
+            Welcome To <span className="text-green-600">Harifly</span>
           </h2>
 
           {error && (
-            <p className="text-red-500 text-sm mb-4 font-semibold">{error}</p>
+            <p className="text-red-500 text-sm mb-4 font-semibold shadow-inner p-2 rounded">
+              {error}
+            </p>
           )}
 
           {!isForgotPin ? (
             // --- NORMAL LOGIN FORM ---
-            <form onSubmit={handleLogin} className="w-full max-w-sm space-y-4">
+            <form onSubmit={handleLogin} className="w-full max-w-sm space-y-6 shadow-lg p-6 rounded-lg">
               <div className="relative">
                 <FaEnvelope className="absolute top-3 left-3 text-gray-400" />
                 <input
@@ -418,7 +420,7 @@ export default function BiznextIRCTCLogin() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none"
+                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:ring-4 focus:ring-orange-400 focus:border-orange-400 outline-none shadow-md transition"
                 />
               </div>
 
@@ -430,7 +432,7 @@ export default function BiznextIRCTCLogin() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none"
+                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:ring-4 focus:ring-orange-400 focus:border-orange-400 outline-none shadow-md transition"
                 />
               </div>
 
@@ -442,7 +444,7 @@ export default function BiznextIRCTCLogin() {
                   value={pin}
                   onChange={(e) => setPin(e.target.value)}
                   required
-                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none"
+                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:ring-4 focus:ring-orange-400 focus:border-orange-400 outline-none shadow-md transition"
                 />
               </div>
 
@@ -454,12 +456,14 @@ export default function BiznextIRCTCLogin() {
                 >
                   Forgot Pin?
                 </button>
-                <a href="#">Forgot Password?</a>
+                <a href="#" className="hover:underline">
+                  Forgot Password?
+                </a>
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-orange-600 to-purple-600 text-white py-3 rounded-lg shadow hover:opacity-90 transition"
+                className="w-full bg-gradient-to-r from-orange-600 to-purple-600 text-white py-3 rounded-lg shadow-lg hover:opacity-90 transition"
               >
                 LOG IN
               </button>
@@ -477,12 +481,12 @@ export default function BiznextIRCTCLogin() {
                       value={mobile}
                       onChange={(e) => setMobile(e.target.value)}
                       required
-                      className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none"
+                      className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:ring-4 focus:ring-orange-400 focus:border-orange-400 outline-none shadow-md transition"
                     />
                   </div>
                   <button
                     type="submit"
-                    className="w-full bg-orange-600 text-white py-3 rounded-lg shadow hover:opacity-90 transition"
+                    className="w-full bg-orange-600 text-white py-3 rounded-lg shadow-lg hover:opacity-90 transition"
                   >
                     Send OTP
                   </button>
@@ -497,11 +501,11 @@ export default function BiznextIRCTCLogin() {
                     value={otp}
                     onChange={(e) => setOtp(e.target.value)}
                     required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-4 focus:ring-orange-400 focus:border-orange-400 outline-none shadow-md transition"
                   />
                   <button
                     type="submit"
-                    className="w-full bg-orange-600 text-white py-3 rounded-lg shadow hover:opacity-90 transition"
+                    className="w-full bg-orange-600 text-white py-3 rounded-lg shadow-lg hover:opacity-90 transition"
                   >
                     Verify OTP
                   </button>
@@ -513,12 +517,12 @@ export default function BiznextIRCTCLogin() {
                   <input
                     type="password"
                     placeholder="Enter new PIN"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-4 focus:ring-green-500 focus:border-green-500 outline-none shadow-md transition"
                     required
                   />
                   <button
                     type="submit"
-                    className="w-full bg-green-600 text-white py-3 rounded-lg shadow hover:opacity-90 transition"
+                    className="w-full bg-green-600 text-white py-3 rounded-lg shadow-lg hover:opacity-90 transition"
                   >
                     Reset PIN
                   </button>

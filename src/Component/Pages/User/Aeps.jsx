@@ -202,19 +202,30 @@ import { RiFileList3Line } from "react-icons/ri";
 import { TbReportMoney } from "react-icons/tb";
 import { FaRegBuilding, FaRegIdCard, FaMobileAlt, FaRupeeSign, FaExclamationCircle } from "react-icons/fa";
 import TransactionSection from './DTHConnection/TransactionSection';
+import { useNavigate } from 'react-router-dom';
 // import balanceImg from '../../assets/aeps-balance.png'
 
-const services = [
-  { id: 1, name: "Withdraw", icon: <FaMoneyBillWave size={26} /> },
-  { id: 2, name: "Balance Enquiry", icon: <TbReportMoney size={26} /> },
-  { id: 3, name: "Mini Statement", icon: <RiFileList3Line size={26} /> },
-  { id: 4, name: "Cash Deposit", icon: <FaLandmark size={26} /> },
-  { id: 5, name: "Aadhaar Pay", icon: <FaFingerprint size={26} /> },
-  { id: 6, name: "Wallet Settlement", icon: <MdAccountBalanceWallet size={26} /> },
-];
+
+
+
+
 
 const Aeps = () => {
   const [active, setActive] = useState(1);
+  const navigate = useNavigate();
+
+   const handleClick13 = () => {
+    navigate("/user/banking/aadhar-pay"); 
+  };
+
+  const services = [
+  { id: 1, name: "Withdraw", icon: <FaMoneyBillWave size={26} /> },
+  { id: 2, name: "Balance Enquiry", icon: <TbReportMoney size={26} /> },
+  { id: 3, name: "Mini Statement", icon: <RiFileList3Line size={26}  /> },
+  { id: 4, name: "Cash Deposit", icon: <FaLandmark size={26} /> },
+  { id: 5, name: "Aadhaar Pay", icon: <FaFingerprint size={26} onClick={handleClick13} /> },
+  { id: 6, name: "Wallet Settlement", icon: <MdAccountBalanceWallet size={26} /> },
+];
 
   return (
     <>
