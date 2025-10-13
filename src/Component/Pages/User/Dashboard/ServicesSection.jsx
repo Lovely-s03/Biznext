@@ -64,11 +64,6 @@ const ServicesSection = () => {
     { id: 19, icon: <AiFillGold size={40} className="text-[#000080]" onClick={handleClick8} />, title: "Digigold" },
     { id: 15, icon: <BsBagHeart size={40} className="text-[#000080]" onClick={handleClick9} />, title: "Sell & Earn" },
     { id: 22, icon: <BsBank2 size={40} className="text-[#000080]" onClick={handleClick10} />, title: "Bank CSP" },
-   
-
-
-    
-    
     { id: 4, icon: <FaFileInvoice size={40} className="text-[#000080]" />, title: "Bill Payments" },
     { id: 6, icon: <FaUniversity size={40} className="text-[#000080]" />, title: "Bank Account" },
     { id: 7, icon: <FaPiggyBank size={40} className="text-[#000080]" />, title: "Deposit Money" },

@@ -309,7 +309,7 @@ const AddService = () => {
           <div className="flex items-center justify-center gap-3">
             <img src={bizMan} alt="Biz Man" className="w-12 h-12 object-contain" />
             <h1 className="text-3xl md:text-4xl font-bold text-[#0A2AA3]">
-              BIZNEXT BIZ-BOOST PLAN
+              HARYFLY BIZ-BOOST PLAN
             </h1>
           </div>
         </div>
