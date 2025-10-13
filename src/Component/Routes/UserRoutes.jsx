@@ -53,7 +53,7 @@ const UserRoutes = () => {
         <Route path="/insurance" element={<Insurance />} />
         <Route path="banking/money-transfer" element={<MoneyTransfer />} />
         <Route path="/banking/aadhar-pay" element={<Aadhar />} />
-        <Route path="banking/aeps" element={<Aeps />} />
+        <Route path="/banking/aeps" element={<Aeps />} />
         <Route path="creditCard" element={<CreditCard />} />
 
        
