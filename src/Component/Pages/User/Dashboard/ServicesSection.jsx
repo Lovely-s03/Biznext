@@ -13,15 +13,15 @@ const ServicesSection = () => {
    const navigate = useNavigate();
 
    const handleClick = () => {
-    navigate("/user/banking/money-transfer"); // target new page route
+    navigate("/user/banking/money-transfer");
   };
 
    const handleClick1 = () => {
-    navigate("/user/recharge/mobile"); // target new page route
+    navigate("/user/recharge/mobile"); 
   };
 
     const handleClick2 = () => {
-    navigate("/user/banking/aadhar-pay"); // target new page route
+    navigate("/user/banking/aadhar-pay"); 
   };
    const handleClick3 = () => {
     navigate("/user/dth"); // target new page route
@@ -45,13 +45,14 @@ const ServicesSection = () => {
     navigate("/user/sellearn"); // target new page route
   };
   const handleClick10 = () => {
-    navigate("/user/bankcsp"); // target new page route
+    navigate("/user/bankcsp"); 
   };
   const handleClick11 = () => {
-    navigate("/user/creditCard"); // target new page route
+    navigate("/user/creditCard"); 
   };
+  
   const services = [
-    { id: 1, icon: <FaFingerprint size={40} className="text-[#000080]" />, title: "AEPS" },
+    { id: 1, icon: <FaFingerprint size={40} className="text-[#000080]" /> , title: "AEPS" },
      { id: 20, icon: <BsFillCreditCardFill size={40} className="text-[#000080]" onClick={handleClick11}/>, title: "Credit Card" },
     { id: 2, icon: <FaExchangeAlt size={40} className="text-[#000080]" onClick={handleClick} />, title: "Money Transfer" },
     { id: 3, icon: <FaMobileAlt size={40} className="text-[#000080]" onClick={handleClick1} />, title: "Recharge" },
