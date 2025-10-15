@@ -223,7 +223,7 @@ const Aeps = () => {
   { id: 2, name: "Balance Enquiry", icon: <TbReportMoney size={26} /> },
   { id: 3, name: "Mini Statement", icon: <RiFileList3Line size={26}  /> },
   { id: 4, name: "Cash Deposit", icon: <FaLandmark size={26} /> },
-  { id: 5, name: "Aadhaar Pay", icon: <FaFingerprint size={26} onClick={handleClick13} /> },
+  { id: 5, name: "Aadhaar Pay" ,  icon: <FaFingerprint size={26} onClick={handleClick13}  /> },
   { id: 6, name: "Wallet Settlement", icon: <MdAccountBalanceWallet size={26} /> },
 ];
 

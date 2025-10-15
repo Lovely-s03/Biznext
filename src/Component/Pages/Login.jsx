@@ -239,12 +239,15 @@ import {
   FaKey,
   FaPhoneAlt,
 } from "react-icons/fa";
+import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext";
-import moto from "../../assets/payment.webp";
+import moto from "../../assets/pngtree-online-bill-payment-icon-orange-template-png-image_6936709.png";
 import logo from "../../assets/hariflyicon.svg";
-import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
-
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import back from "../../assets/360_F_1698353616_Xa27cGnE2JGXGvg0ZoQOW1qgpa4zVsB9.jpg";
 export default function BiznextIRCTCLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -255,11 +258,14 @@ export default function BiznextIRCTCLogin() {
   const [otp, setOtp] = useState("");
   const [generatedOtp, setGeneratedOtp] = useState(null);
   const [otpVerified, setOtpVerified] = useState(false);
+  const [showOtp, setShowOtp] = useState(false);
+  const [currentIP, setCurrentIP] = useState(null);
+  const [loggedInIPs, setLoggedInIPs] = useState(new Set());
+  const [location, setLocation] = useState("Fetching location...");
 
   const { auth, login } = useAuth();
   const navigate = useNavigate();
 
-  // Redirect if already logged in
   useEffect(() => {
     if (auth.isAuthenticated) {
       if (auth.role === "admin") navigate("/admin");
@@ -267,67 +273,18 @@ export default function BiznextIRCTCLogin() {
     }
   }, [auth, navigate]);
 
-  // --- LOGIN FUNCTIONALITY ---
-  const handleLogin = (e) => {
-    e.preventDefault();
-
-    if (email === "admin" && password === "admin123" && pin === "1234") {
-      login("admin");
-      navigate("/admin");
-    } else if (email === "user" && password === "user123" && pin === "1234") {
-      login("user");
-      navigate("/user/dashboard");
-    } else {
-      setError("Invalid credentials. Please try again.");
-    }
-  };
-
-  // --- FORGOT PIN FLOW ---
-  const handleSendOtp = (e) => {
-    e.preventDefault();
-    if (!mobile || mobile.length < 10) {
-      setError("Please enter a valid mobile number.");
-      return;
-    }
-
-    const randomOtp = Math.floor(100000 + Math.random() * 900000);
-    setGeneratedOtp(randomOtp);
-    console.log("📲 OTP sent to", mobile, "→", randomOtp); // 👈 OTP appears in console
-    setError("");
-  };
-
-  const handleVerifyOtp = (e) => {
-    e.preventDefault();
-    if (parseInt(otp) === generatedOtp) {
-      setOtpVerified(true);
-      setError("");
-      console.log("✅ OTP verified successfully!");
-    } else {
-      setError("Invalid OTP. Please try again.");
-    }
-  };
-
-  const handleResetPin = (e) => {
-    e.preventDefault();
-    console.log("🎉 PIN reset successful for mobile:", mobile);
-    alert("PIN reset successfully! (simulated)");
-    setIsForgotPin(false);
-    setOtpVerified(false);
-    setOtp("");
-    setMobile("");
-    setGeneratedOtp(null);
-  };
-  const [location, setLocation] = useState("Fetching location...");
-
   useEffect(() => {
-    // Use browser geolocation
+    // Fetch IP address
+    fetch('https://api.ipify.org?format=json')
+      .then(res => res.json())
+      .then(data => setCurrentIP(data.ip))
+      .catch(() => setCurrentIP(null));
+
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         async (position) => {
           const { latitude, longitude } = position.coords;
-
           try {
-            // Reverse geocode to get readable city
             const res = await fetch(
               `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
             );
@@ -337,249 +294,330 @@ export default function BiznextIRCTCLogin() {
               data.address.town ||
               data.address.village ||
               data.address.state ||
-              "Unknown location";
+              "Unknown";
             setLocation(city);
-          } catch (error) {
-            console.error("Location fetch error:", error);
-            setLocation("Location unavailable");
+          } catch {
+            setLocation("Unavailable");
           }
         },
-        (error) => {
-          console.warn("Geolocation denied or unavailable:", error);
-          setLocation("Location permission denied");
-        }
+        () => setLocation("Permission denied")
       );
     } else {
-      setLocation("Geolocation not supported");
+      setLocation("Not supported");
     }
   }, []);
 
-  return (
-    <>
-      <div className="flex items-center justify-between w-full p-4 bg-white shadow">
-        {/* Logo */}
-        <div>
-          <img src={logo} alt="Logo" className="w-24" />
-        </div>
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if (!email || !password || !pin) {
+      setError("Please fill all fields.");
+      return;
+    }
+    // Check if IP has already logged in
+    if (currentIP && loggedInIPs.has(currentIP)) {
+      // Direct login without OTP
+      if (email === "admin" && password === "admin123" && pin === "1234") {
+        login("admin");
+        navigate("/admin");
+      } else if (email === "user" && password === "user123" && pin === "1234") {
+        login("user");
+        navigate("/user/dashboard");
+      } else {
+        setError("Invalid credentials. Please try again.");
+      }
+    } else {
+      // Generate OTP and show OTP field
+      const otp = Math.floor(100000 + Math.random() * 900000);
+      setGeneratedOtp(otp);
+      console.log("OTP sent to email:", email, "OTP:", otp);
+      setShowOtp(true);
+      setError("");
+    }
+  };
 
-        {/* Contact + Location */}
-        <div className="flex justify-end items-center gap-4 text-right text-gray-700">
-          <p className="text-sm font-medium">
-            <span className="inline-flex items-center text-orange-600">
-              <MdLocationOn className="mr-1" />
-              {location}
-            </span>
-          </p>
-          <p className="text-sm font-medium flex items-center gap-1">
-            <MdPhone className="text-gray-700" />
-            +1 234 567 890
-          </p>
-          <p className="text-sm font-medium flex items-center gap-1">
-            <MdEmail className="text-gray-700" />
-            example@email.com
-          </p>
-        </div>
+  const handleVerifyOtp = (e) => {
+    e.preventDefault();
+    if (parseInt(otp) === generatedOtp) {
+      // Add IP to logged in IPs for future direct login
+      if (currentIP) {
+        setLoggedInIPs(prev => new Set([...prev, currentIP]));
+      }
+      // Proceed with login after OTP verification
+      if (email === "admin" && password === "admin123" && pin === "1234") {
+        login("admin");
+        navigate("/admin");
+      } else if (email === "user" && password === "user123" && pin === "1234") {
+        login("user");
+        navigate("/user/dashboard");
+      } else {
+        setError("Invalid credentials. Please try again.");
+      }
+    } else {
+      setError("Invalid OTP. Try again.");
+    }
+  };
+
+  const handleSendOtp = (e) => {
+    e.preventDefault();
+    if (!mobile || mobile.length < 10) {
+      setError("Please enter a valid mobile number.");
+      return;
+    }
+    const otp = Math.floor(100000 + Math.random() * 900000);
+    setGeneratedOtp(otp);
+    console.log("OTP Sent:", otp);
+    setError("");
+  };
+
+
+
+  const handleResetPin = (e) => {
+    e.preventDefault();
+    alert("PIN reset successfully!");
+    setIsForgotPin(false);
+    setOtpVerified(false);
+    setOtp("");
+    setMobile("");
+    setGeneratedOtp(null);
+  };
+
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    arrows: false,
+  };
+
+  const promoImages = [
+    moto,
+    "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1593642634315-48f5414c3ad9?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1620207418302-439b387441b0?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1600&q=80",
+  ];
+
+  // Reusable Header/Footer
+  const HeaderFooter = (
+    <div className="flex flex-col sm:flex-row items-center justify-between w-full p-3 sm:p-4 bg-gradient-to-r  text-black gap-2 sm:gap-4 rounded-lg shadow-2xl">
+      <div className="flex items-center justify-center sm:justify-start mb-2 sm:mb-0">
+        <img src={logo} alt="Logo" className="w-20 sm:w-24" />
       </div>
-      <div className=" flex flex-col md:flex-row bg-gradient-to-br text-gray-900">
-        {/* LEFT SECTION */}
+      <div className="flex flex-col sm:flex-row justify-center sm:justify-end items-center sm:items-center gap-2 sm:gap-4 text-sm sm:text-base text-center sm:text-right">
+        <p className="font-medium flex items-center ">
+          <MdLocationOn className="mr-1" /> {location}
+        </p>
+        <p className="font-medium flex items-center gap-1">
+          <MdPhone className="" /> +1 234 567 890
+        </p>
+        <p className="font-medium flex items-center gap-1">
+          <MdEmail className="" /> Harifly@gmail.com
+        </p>
+      </div>
+    </div>
+  );
 
-        <div className=" bg-white text-gray-900  flex flex-col justify-center relative overflow-hidden">
-          <div className="mt-1 w-full pt-3 p-2 bg-white">
+  return (
+    <div className="flex flex-col min-h-screen">
+      {/* ---------- HEADER ---------- */}
+      {HeaderFooter}
+
+      <div className="w-full overflow-hidden bg-blue-100 border  rounded-lg py-2">
+        <marquee className="animate-marquee whitespace-nowrap inline-block text-orange-500 font-semibold">
+          ⚡ Payment Reminder: Your payment is due by 20th Oct.
+          &nbsp;&nbsp;&nbsp; ⚡ Payment Successful: Order #12345 has been
+          confirmed. &nbsp;&nbsp;&nbsp; ⚡ New Offer: Get 10% cashback on your
+          next payment. &nbsp;&nbsp;&nbsp;
+        </marquee>
+      </div>
+
+      {/* ---------- MAIN SECTION ---------- */}
+      <div className="flex flex-col md:flex-row flex-1 bg-gradient-to-br from-white via-gray-50 to-gray-100">
+        {/* LEFT IMAGE SECTION */}
+        {/* LEFT IMAGE SECTION */}
+
+        {/* LEFT IMAGE SLIDER SECTION */}
+        {/* LEFT IMAGE SLIDER SECTION */}
+        <div className="md:w-2/3 relative flex items-center justify-center p-4 md:p-8 max-h-[600px]">
+          <Slider {...sliderSettings} className="w-full rounded-xl ">
+            {promoImages.map((img, index) => (
+              <div key={index}>
+                <img
+                  src={img}
+                  alt={`Promo ${index + 1}`}
+                  className="w-full h-96 md:h-[550px] object-cover rounded-xl"
+                />
+              </div>
+            ))}
+          </Slider>
+        </div>
+
+        {/* <div className="md:w-2/3 relative flex items-center justify-center p-4 md:p-8">
+          <img
+            src={moto}
+            alt="Promo"
+            className="w-full h-auto object-cover rounded-xl shadow-2xl"
+          />
+        </div> */}
+
+        {/* RIGHT LOGIN SECTION */}
+        <div className="md:w-1/2 flex flex-col justify-center items-center p-4 sm:p-8 relative">
+          {/* Background Image */}
+          <div className="absolute inset-0">
             <img
-              src={moto}
-              alt="AyushPay"
-              className="w-full h-[700px] object-cover "
+              src={back} 
+              alt="Background"
+              className="w-full h-full object-cover opacity-5" 
             />
           </div>
 
-          <div className="absolute bottom-4 right-4 text-sm text-gray-600">
-            <p>Download Application Today!</p>
-          </div>
-        </div>
+          {/* Login content */}
+          <div className="relative w-full z-10">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6 text-center">
+              Welcome To <span className="text-green-600">Harifly</span>
+            </h2>
 
-        {/* RIGHT SECTION */}
-        <div className="md:w-1/2 flex flex-col justify-center items-center sh rounded-lg shadow-lg p-8">
-          <h2 className="text-2xl font-bold mb-6">
-            Welcome To <span className="text-green-600">Harifly</span>
-          </h2>
+            {error && (
+              <p className="text-red-500 text-sm mb-3 font-semibold bg-red-50 border border-red-200 p-2 rounded w-full max-w-sm text-center">
+                {error}
+              </p>
+            )}
 
-          {error && (
-            <p className="text-red-500 text-sm mb-4 font-semibold shadow-inner p-2 rounded">
-              {error}
-            </p>
-          )}
-
-          {!isForgotPin ? (
-            // --- NORMAL LOGIN FORM ---
-            <form onSubmit={handleLogin} className="w-full max-w-sm space-y-6 shadow-lg p-6 rounded-lg">
-              <div className="relative">
-                <FaEnvelope className="absolute top-3 left-3 text-gray-400" />
-                <input
-                  type="text"
-                  placeholder="Enter your Email / Mobile*"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:ring-4 focus:ring-orange-400 focus:border-orange-400 outline-none shadow-md transition"
-                />
-              </div>
-
-              <div className="relative">
-                <FaLock className="absolute top-3 left-3 text-gray-400" />
-                <input
-                  type="password"
-                  placeholder="Enter your Password*"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:ring-4 focus:ring-orange-400 focus:border-orange-400 outline-none shadow-md transition"
-                />
-              </div>
-
-              <div className="relative">
-                <FaKey className="absolute top-3 left-3 text-gray-400" />
-                <input
-                  type="password"
-                  placeholder="Login PIN*"
-                  value={pin}
-                  onChange={(e) => setPin(e.target.value)}
-                  required
-                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:ring-4 focus:ring-orange-400 focus:border-orange-400 outline-none shadow-md transition"
-                />
-              </div>
-
-              <div className="flex justify-between text-sm text-orange-500">
-                <button
-                  type="button"
-                  onClick={() => setIsForgotPin(true)}
-                  className="hover:underline"
+            {!isForgotPin ? (
+              !showOtp ? (
+                <form
+                  onSubmit={handleLogin}
+                  className="w-full max-w-sm bg-white/90 shadow-2xl p-6 rounded-lg space-y-5"
                 >
-                  Forgot Pin?
-                </button>
-                <a href="#" className="hover:underline">
-                  Forgot Password?
-                </a>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-gradient-to-r from-orange-600 to-purple-600 text-white py-3 rounded-lg shadow-lg hover:opacity-90 transition"
-              >
-                LOG IN
-              </button>
-            </form>
-          ) : (
-            // --- FORGOT PIN FORM ---
-            <div className="w-full max-w-sm space-y-4">
-              {!generatedOtp && (
-                <form onSubmit={handleSendOtp} className="space-y-4">
                   <div className="relative">
-                    <FaPhoneAlt className="absolute top-3 left-3 text-gray-400" />
+                    <FaEnvelope className="absolute top-3 left-3 text-gray-400" />
                     <input
-                      type="tel"
-                      placeholder="Enter your registered mobile*"
-                      value={mobile}
-                      onChange={(e) => setMobile(e.target.value)}
+                      type="text"
+                      placeholder="Enter your Email / Mobile*"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-orange-400 outline-none"
                       required
-                      className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:ring-4 focus:ring-orange-400 focus:border-orange-400 outline-none shadow-md transition"
                     />
                   </div>
+
+                  <div className="relative">
+                    <FaLock className="absolute top-3 left-3 text-gray-400" />
+                    <input
+                      type="password"
+                      placeholder="Enter your Password*"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-orange-400 outline-none"
+                      required
+                    />
+                  </div>
+
+                  <div className="relative">
+                    <FaKey className="absolute top-3 left-3 text-gray-400" />
+                    <input
+                      type="password"
+                      placeholder="Login PIN*"
+                      value={pin}
+                      onChange={(e) => setPin(e.target.value)}
+                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-orange-400 outline-none"
+                      required
+                    />
+                  </div>
+
+                  <div className="flex justify-between text-xs sm:text-sm text-blue-500">
+                    <button
+                      type="button"
+                      onClick={() => setIsForgotPin(true)}
+                      className="hover:underline"
+                    >
+                      Forgot Pin?
+                    </button>
+                    <a href="#" className="hover:underline">
+                      Forgot Password?
+                    </a>
+                  </div>
+
                   <button
                     type="submit"
-                    className="w-full bg-orange-600 text-white py-3 rounded-lg shadow-lg hover:opacity-90 transition"
+                    className="w-full bg-blue-600 py-3 rounded-lg shadow hover:opacity-90 transition"
                   >
-                    Send OTP
+                    LOG IN
                   </button>
                 </form>
-              )}
+              ) : (
+                <form
+                  onSubmit={handleVerifyOtp}
+                  className="w-full max-w-sm bg-white/90 shadow-2xl p-6 rounded-lg space-y-5"
+                >
+                  <div className="relative">
+                    <FaKey className="absolute top-3 left-3 text-gray-400" />
+                    <input
+                      type="text"
+                      placeholder="Enter OTP*"
+                      value={otp}
+                      onChange={(e) => setOtp(e.target.value)}
+                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-orange-400 outline-none"
+                      required
+                    />
+                  </div>
 
-              {generatedOtp && !otpVerified && (
-                <form onSubmit={handleVerifyOtp} className="space-y-4">
-                  <input
-                    type="number"
-                    placeholder="Enter received OTP"
-                    value={otp}
-                    onChange={(e) => setOtp(e.target.value)}
-                    required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-4 focus:ring-orange-400 focus:border-orange-400 outline-none shadow-md transition"
-                  />
                   <button
                     type="submit"
-                    className="w-full bg-orange-600 text-white py-3 rounded-lg shadow-lg hover:opacity-90 transition"
+                    className="w-full bg-green-600 py-3 rounded-lg shadow hover:opacity-90 transition"
                   >
-                    Verify OTP
+                    VERIFY OTP
                   </button>
                 </form>
-              )}
+              )
+            ) : (
+              <div className="w-full max-w-sm bg-white/90 shadow-lg p-6 rounded-lg space-y-4">
+                {/* OTP / Reset PIN forms here */}
+              </div>
+            )}
 
-              {otpVerified && (
-                <form onSubmit={handleResetPin} className="space-y-4">
-                  <input
-                    type="password"
-                    placeholder="Enter new PIN"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-4 focus:ring-green-500 focus:border-green-500 outline-none shadow-md transition"
-                    required
-                  />
-                  <button
-                    type="submit"
-                    className="w-full bg-green-600 text-white py-3 rounded-lg shadow-lg hover:opacity-90 transition"
-                  >
-                    Reset PIN
-                  </button>
-                </form>
-              )}
-
-              <button
-                onClick={() => {
-                  setIsForgotPin(false);
-                  setError("");
-                  setOtp("");
-                  setMobile("");
-                  setGeneratedOtp(null);
-                  setOtpVerified(false);
-                }}
-                className="w-full text-center text-sm text-blue-600 mt-3 underline"
-              >
-                Back to Login
-              </button>
+            <div className="mt-6 text-xs text-gray-500 text-center">
+              <a href="#" className="hover:text-blue-600">
+                {" "}
+                Privacy Policy{" "}
+              </a>{" "}
+              |{" "}
+              <a href="#" className="hover:text-blue-600">
+                {" "}
+                Terms & Conditions{" "}
+              </a>{" "}
             </div>
-          )}
 
-          {/* Footer */}
-          {!isForgotPin && (
-            <>
-              <p className="mt-6 text-gray-600 text-sm">
-                Create your free account{" "}
-                <a href="#" className="text-orange-500 font-semibold">
-                  Sign Up
-                </a>
-              </p>
-
-              <div className="flex space-x-4 mt-6 text-xl text-gray-600">
-                <FaFacebookF className="hover:text-blue-600 cursor-pointer" />
-                <FaTwitter className="hover:text-sky-500 cursor-pointer" />
-                <FaInstagram className="hover:text-pink-500 cursor-pointer" />
-                <FaYoutube className="hover:text-red-600 cursor-pointer" />
-                <FaWhatsapp className="hover:text-green-500 cursor-pointer" />
-              </div>
-
-              <div className="mt-6 text-xs text-gray-500">
-                <a href="#" className="hover:text-blue-600">
-                  Privacy Policy
-                </a>{" "}
-                |{" "}
-                <a href="#" className="hover:text-blue-600">
-                  Terms & Conditions
-                </a>
-              </div>
-
-              <div className="mt-6 text-xs text-gray-400">
+            {!isForgotPin && (
+              <div className="mt-4 text-xs text-gray-400 text-center">
                 <b>Try:</b> user/user123/1234 or admin/admin123/1234
               </div>
-            </>
-          )}
+            )}
+          </div>
         </div>
       </div>
-    </>
+
+      {/* ---------- FOOTER ---------- */}
+      <footer className="w-full bg-white py-4">
+        <div className="flex items-center justify-between max-w-6xl mx-auto px-4">
+          {/* Center: Company */}
+          <div className="text-xs sm:text-sm text-gray-400 text-center">
+            © Copyright 2025, All Rights Reserved By Harifly Technologies Private Limited 
+          </div>
+
+          {/* Right: Social Icons */}
+          <div className="flex space-x-4 text-lg text-gray-600">
+            <FaFacebookF className="hover:text-blue-600 cursor-pointer" />
+            <FaTwitter className="hover:text-sky-500 cursor-pointer" />
+            <FaInstagram className="hover:text-pink-500 cursor-pointer" />
+            <FaYoutube className="hover:text-red-600 cursor-pointer" />
+            <FaWhatsapp className="hover:text-green-500 cursor-pointer" />
+          </div>
+        </div>
+      </footer>
+    </div>
   );
 }
