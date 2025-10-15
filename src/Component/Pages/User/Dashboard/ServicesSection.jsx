@@ -50,9 +50,12 @@ const ServicesSection = () => {
   const handleClick11 = () => {
     navigate("/user/creditCard"); 
   };
+  const handleClick12 = () => {
+    navigate("/user/banking/aeps"); 
+  };
   
   const services = [
-    { id: 1, icon: <FaFingerprint size={40} className="text-[#000080]" /> , title: "AEPS" },
+    { id: 1, icon: <FaFingerprint size={40} className="text-[#000080]" onClick={handleClick12}/> , title: "AEPS" },
      { id: 20, icon: <BsFillCreditCardFill size={40} className="text-[#000080]" onClick={handleClick11}/>, title: "Credit Card" },
     { id: 2, icon: <FaExchangeAlt size={40} className="text-[#000080]" onClick={handleClick} />, title: "Money Transfer" },
     { id: 3, icon: <FaMobileAlt size={40} className="text-[#000080]" onClick={handleClick1} />, title: "Recharge" },
